@@ -1,0 +1,2 @@
+# newspaperizer
+Newspaper-like blog
