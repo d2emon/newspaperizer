@@ -1,3 +1,10 @@
-from django.shortcuts import render
+from django.views.generic import ListView, DetailView
+from newspaper.models import Newspaper
 
-# Create your views here.
+
+class NewspaperListView(ListView):
+    model = Newspaper
+    
+    
+class NewspaperDetailView(DetailView):
+    model = Newspaper

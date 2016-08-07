@@ -1,0 +1,10 @@
+{% extends 'newspaper/base.html' %}
+{% block content %}
+    {% for newspaper in object_list %}
+        <h2><a href="{{ newspaper.get_absolute_url }}">{{ newspaper.title }}</a></h2>
+        <p>{{ newspaper.content }}</p>
+    {% empty %}
+    <p>Нет газет</p>
+    {% endfor %}
+
+{% endblock %}
