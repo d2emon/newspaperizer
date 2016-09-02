@@ -1,0 +1,8 @@
+{% extends 'newspaper/base.html' %} {% block content %} {% for year in object_list %}
+<h2>
+	<a href="{{ year.get_absolute_url }}">{{ year.year }}</a>
+</h2>
+<p>{{ year.content }}</p>
+{% empty %}
+<p>Нет газет</p>
+{% endfor %} {% endblock %}

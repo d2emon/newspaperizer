@@ -22,6 +22,11 @@ class Year(models.Model):
     
     def __str__(self):
         return self.__unicode__()
+
+
+    def get_absolute_url(self):
+        return "/newspaper/year/%i/" % self.year
+    
     
 class Issue(models.Model):
     year = models.ForeignKey(Year)

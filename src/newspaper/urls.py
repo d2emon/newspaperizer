@@ -9,5 +9,6 @@ import newspaper.views
 urlpatterns = [
     url(r'^$', NewspaperListView.as_view(), name='list'),
     url(r'^hello$', newspaper.views.index, name='hello'),
-    url(r'^(?P<pk>\d+)/$', NewspaperDetailView.as_view()),
+    url(r'^(?P<pk>\d+)/$', newspaper.views.years),
+    # url(r'^(?P<pk>\d+)/$', NewspaperDetailView.as_view()),
 ]
