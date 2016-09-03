@@ -1,8 +1,10 @@
 from django.db import models
 
+    
 class Newspaper(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField(max_length=10000)
+    # issues = models.ManyToManyField('Issue')
     
     def __unicode__(self):
         return self.title
@@ -16,6 +18,7 @@ class Newspaper(models.Model):
 
 class Year(models.Model):
     year = models.IntegerField()
+    # issues = models.ManyToManyField('Issue')
     
     def __unicode__(self):
         return self.year.__str__()
@@ -29,8 +32,8 @@ class Year(models.Model):
     
     
 class Issue(models.Model):
-    year = models.ForeignKey(Year)
-    newspaper = models.ForeignKey(Newspaper)
+    newspaper = models.ForeignKey('Newspaper', null=True)
+    year = models.ForeignKey('Year', null=True)
     issue = models.IntegerField(default=0)
     description = models.CharField(max_length=255, blank=True)
     
