@@ -1,0 +1,8 @@
+{% extends 'newspaper/base.html' %} {% block content %} {% for issue in object_list %}
+<h2>
+	<a href="{% url 'issue' issue.newspaper_id issue.year issue.issue  %}">{{ issue }}</a>
+</h2>
+<p>{{ issue.description }}</p>
+{% empty %}
+<p>Нет газет</p>
+{% endfor %} {% endblock %}

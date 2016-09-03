@@ -13,7 +13,10 @@ class Newspaper(models.Model):
         return self.__unicode__()
 
     def get_absolute_url(self):
-        return "/newspaper/%i/" % self.id
+        return "/newspaper/{}/".format(self.id)
+    
+    def get_years(self):
+        return self.issue_set.all()
     
 
 class Year(models.Model):
@@ -26,10 +29,6 @@ class Year(models.Model):
     def __str__(self):
         return self.__unicode__()
 
-
-    def get_absolute_url(self):
-        return "/newspaper/year/%i/" % self.year
-    
     
 class Issue(models.Model):
     newspaper = models.ForeignKey('Newspaper', null=True)
@@ -42,3 +41,6 @@ class Issue(models.Model):
         
     def __str__(self):
         return self.__unicode__()
+    
+    def get_absolute_url(self):
+        return "/newspaper/{}/{}/{}".format(self.newspaper.id, self.year.year, self.issue)

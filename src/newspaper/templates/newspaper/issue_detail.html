@@ -1,0 +1,7 @@
+{% extends 'newspaper/base.html' %} {% block content %}<h1>{{ issue }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<div>
+{{ issue.description }}
+</div>{% endblock %}
