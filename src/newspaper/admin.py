@@ -11,5 +11,6 @@ class NewspaperAdmin(admin.ModelAdmin):
     inlines = [IssueInline]
 
 
+admin.site.register(Issue)
 admin.site.register(Year)
 admin.site.register(Newspaper, NewspaperAdmin)
