@@ -3,19 +3,6 @@ from django.views.generic import ListView, DetailView
 from newspaper.models import Newspaper, Year, Issue
 
 
-def index(request):
-    return HttpResponse("Hello world!")
-
-def years(request, pk):
-    np = Newspaper.objects.get(pk=pk)
-    # issues = np.get_issues()
-    print(np)
-    print(np.issue_set.all())
-    return HttpResponse(np)
-    # dv = NewspaperDetailView
-    # return dv.as_view()
-    
-    
 class NewspaperListView(ListView):
     model = Newspaper
     
@@ -65,11 +52,3 @@ class IssueDetailView(DetailView):
         np = Newspaper.objects.get(pk=newspaper_id)
         year = Year.objects.get(year=year_id)
         return self.model.objects.get(newspaper=np, year=year, issue=issue_id)
-    
-    
-# class NewspaperDetailView(DetailView):
-class NewspaperDetailView(ListView):
-    model = Issue
-    
-    # def get_queryset(self):
-        # return self.model.objects.filter(newspaper=1)
