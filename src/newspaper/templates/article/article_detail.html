@@ -1,0 +1,15 @@
+{% extends 'newspaper/base.html' %} {% block title %} - {{ issue }} {% endblock %} {% block content %}
+<h1>{{ article.title }}</h1>
+<div>
+	<div>
+		<a href="{% url 'issue' article.issue.newspaper_id article.issue.year article.issue.issue  %}">{{ article.issue }}</a>
+	</div>
+	<div>
+		{{ article.category.title }}
+	</div>
+</div>
+
+<div>
+{{ article.description}}
+</div>
+{% endblock %}

@@ -20,4 +20,5 @@ urlpatterns = [
     # '',
     url(r'^admin/', admin.site.urls),
     url(r'^newspaper/', include('newspaper.urls')),
+    url(r'^article/', include('article.urls')),
 ]

@@ -1,7 +1,5 @@
 #coding: utf-8
 from django.conf.urls import url
-
-
 from newspaper.views import NewspaperListView, YearListView, IssueListView, ArticleListView
 
 

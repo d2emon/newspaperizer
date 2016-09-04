@@ -1,5 +1,4 @@
-from django.http import HttpResponse
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView
 from newspaper.models import Newspaper, Year, Issue
 from article.models import Article
 
