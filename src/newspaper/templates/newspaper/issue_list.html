@@ -1,4 +1,10 @@
-{% extends 'newspaper/base.html' %} {% block title %} - {{ np.title }}'{{ year }} {% endblock %} {% block content %} 
+{% extends 'base.html' %} 
+{% block title %} - {{ np.title }}'{{ year }} {% endblock %} 
+{% block menu %}
+                <li><a href="{% url 'newspapers' %}" class="">Newspapers</a></li>
+                <li><a href="{% url 'year' np.slug %}" class="">{{ np.title }}</a></li>
+{% endblock %}
+{% block content %} 
 <h2>{{ np }}'{{ year }}</h2>
 {% if object_list %}
 <ul>

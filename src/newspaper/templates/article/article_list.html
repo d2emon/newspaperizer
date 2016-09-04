@@ -1,4 +1,11 @@
-{% extends 'newspaper/base.html' %} {% block title %} - {{ issue }} {% endblock %} {% block content %}
+{% extends 'base.html' %} 
+{% block title %} - {{ issue }} {% endblock %} 
+{% block menu %}
+                <li><a href="{% url 'newspapers' %}" class="">Newspapers</a></li>
+                <li><a href="{% url 'year' issue.newspaper.slug %}" class="">{{ issue.newspaper.title }}</a></li>
+                <li><a href="{% url 'issues' issue.newspaper.slug issue.year  %}" class="">{{ issue.year }}</a></li>
+{% endblock %}
+{% block content %}
 <h1>{{ issue }}</h1>
 {% if object_list %}
 <ul>

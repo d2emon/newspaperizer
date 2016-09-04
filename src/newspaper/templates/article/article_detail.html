@@ -1,8 +1,16 @@
-{% extends 'newspaper/base.html' %} {% block title %} - {{ issue }} {% endblock %} {% block content %}
+{% extends 'base.html' %} 
+{% block title %} - {{ issue }} {% endblock %} 
+{% block menu %}
+                <li><a href="{% url 'newspapers' %}" class="">Newspapers</a></li>
+                <li><a href="{% url 'year' article.issue.newspaper.slug %}" class="">{{ article.issue.newspaper.title }}</a></li>
+                <li><a href="{% url 'issues' article.issue.newspaper.slug article.issue.year %}" class="">{{ article.issue.year }}</a></li>
+                <li><a href="{% url 'issue' article.issue.newspaper.slug article.issue.year article.issue.issue %}" class="">{{ article.issue }}</a></li>
+{% endblock %}
+{% block content %}
 <h1>{{ article.title }}</h1>
 <div>
 	<div>
-		<a href="{% url 'issue' article.issue.newspaper_id article.issue.year article.issue.issue  %}">{{ article.issue }}</a>
+		<a href="{% url 'issue' article.issue.newspaper.slug article.issue.year article.issue.issue  %}">{{ article.issue }}</a>
 	</div>
 	<div>
 		{{ article.category.title }}

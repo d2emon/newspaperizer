@@ -7,6 +7,14 @@ def get_newspaper(slug):
     return Newspaper.objects.get(slug=slug)
 
 
+def get_year(year):
+    return Year.objects.get(year=year)
+
+
+def get_issue(np, year, issue):
+    return Issue.objects.get(newspaper=np, year=year, issue=issue)
+
+
 class NewspaperListView(ListView):
     model = Newspaper
     
@@ -14,10 +22,11 @@ class NewspaperListView(ListView):
 class YearListView(ListView):
     model = Year   
     
+    def newspaper_id(self):
+        return self.kwargs.get('np')
+
     def get_queryset(self):
-        newspaper_id = self.kwargs.get('np')
-        
-        np = get_newspaper(newspaper_id)
+        np = get_newspaper(self.newspaper_id())
         
         return self.model.objects.filter(issue__newspaper=np).distinct()
     
@@ -32,20 +41,23 @@ class YearListView(ListView):
 class IssueListView(ListView):
     model = Issue
 
+    def newspaper_id(self):
+        return self.kwargs.get('np')
+
+    def year_id(self):
+        return self.kwargs.get('year')
+
     def get_queryset(self):
-        newspaper_id = self.kwargs.get('np')
-        year_id = self.kwargs.get('year')
-        
-        np = get_newspaper(newspaper_id)
-        year = Year.objects.get(year=year_id)
+        np = get_newspaper(self.newspaper_id())
+        year = get_year(self.year_id())
         
         return self.model.objects.filter(newspaper=np, year=year).distinct()
     
     def get_context_data(self, **kwargs):
         context = ListView.get_context_data(self, **kwargs)
         context.update({
-            "np": get_newspaper(self.kwargs.get('np')),                        
-            "year": Year.objects.get(year=self.kwargs.get('year')),                        
+            "np": get_newspaper(self.newspaper_id()),                        
+            "year": get_year(self.year_id()),                        
         })
         return context
 
@@ -53,29 +65,31 @@ class IssueListView(ListView):
 class ArticleListView(ListView):
     model = Article
 
+    def newspaper_id(self):
+        return self.kwargs.get('np')
+
+    def year_id(self):
+        return self.kwargs.get('year')
+
+    def issue_id(self):
+        return self.kwargs.get('issue')
+
     def get_queryset(self):
-        newspaper_id = self.kwargs.get('np')
-        year_id = self.kwargs.get('year')
-        issue_id = self.kwargs.get('issue')
-        
-        np = get_newspaper(newspaper_id)
-        year = Year.objects.get(year=year_id)
-        issue = Issue.objects.get(newspaper=np, year=year, issue=issue_id)
+        np = get_newspaper(self.newspaper_id())
+        year = get_year(self.year_id())
+        issue = get_issue(np, year, self.issue_id())
         
         return self.model.objects.filter(issue=issue).distinct()
     
     def get_context_data(self, **kwargs):
-        newspaper_id = self.kwargs.get('np')
-        year_id = self.kwargs.get('year')
-        issue_id = self.kwargs.get('issue')
+        np = get_newspaper(self.newspaper_id())
+        year = get_year(self.year_id())
+        issue = get_issue(np, year, self.issue_id())
         
-        np = get_newspaper(newspaper_id)
-        year = Year.objects.get(year=year_id)
-
         context = ListView.get_context_data(self, **kwargs)
         context.update({
             "np": np,                        
             "year": year,                        
-            "issue": Issue.objects.get(newspaper=np, year=year, issue=issue_id),                        
+            "issue": issue,                        
         })
         return context
