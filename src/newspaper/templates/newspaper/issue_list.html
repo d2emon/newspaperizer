@@ -1,8 +1,15 @@
-{% extends 'newspaper/base.html' %} {% block content %} {% for issue in object_list %}
-<h2>
-	<a href="{% url 'issue' issue.newspaper_id issue.year issue.issue  %}">{{ issue }}</a>
-</h2>
-<p>{{ issue.description }}</p>
-{% empty %}
-<p>Нет газет</p>
-{% endfor %} {% endblock %}
+{% extends 'newspaper/base.html' %} {% block title %} - {{ np.title }}'{{ year }} {% endblock %} {% block content %} 
+<h2>{{ np }}'{{ year }}</h2>
+{% if object_list %}
+<ul>
+{% for issue in object_list %}
+<li><a href="{% url 'issue' issue.newspaper_id issue.year issue.issue  %}">{{ issue }}</a></li>
+{% endfor %}
+</ul>
+{% else %}
+<div>Нет газет</div>
+{% endif %}
+<div>
+{{ np.description}}
+</div>
+{% endblock %}

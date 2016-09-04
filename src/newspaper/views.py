@@ -15,6 +15,7 @@ def years(request, pk):
     # dv = NewspaperDetailView
     # return dv.as_view()
     
+    
 class NewspaperListView(ListView):
     model = Newspaper
     
@@ -44,6 +45,15 @@ class IssueListView(ListView):
         np = Newspaper.objects.get(pk=newspaper_id)
         year = Year.objects.get(year=year_id)
         return self.model.objects.filter(newspaper=np, year=year).distinct()
+    
+    def get_context_data(self, **kwargs):
+        context = ListView.get_context_data(self, **kwargs)
+        context.update({
+            "np": Newspaper.objects.get(pk=self.kwargs.get('np')),                        
+            "year": Year.objects.get(year=self.kwargs.get('year')),                        
+        })
+        return context
+
     
 class IssueDetailView(DetailView):
     model = Issue

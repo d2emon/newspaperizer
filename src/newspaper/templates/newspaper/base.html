@@ -3,7 +3,7 @@
     <head>
         <!-- {{STATIC_URL}} -->
         <meta charset="utf-8" />
-        <title>Newspapers</title>
+        <title>Newspaperizer{% block title %}{% endblock %}</title>
         <link href="{% static "/bootstrap/css/bootstrap.css" %}" rel="stylesheet">
         <style>
             body {
@@ -40,6 +40,14 @@
 <div class="container">
      {% block content %}Empty page{% endblock %}
 </div> <!-- container -->
+
+{% comment %}
+<div>
+<pre>
+{% debug %}
+</pre>
+</div>
+{% endcomment %}
 
 </body>
 </html>
