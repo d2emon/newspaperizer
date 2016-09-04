@@ -7,6 +7,9 @@ class ArticleAdmin(admin.ModelAdmin):
         ('Newspaper', {'fields': (('issue', 'page'), 'category')}),
         (None, {'fields': ('title', 'description')}),
     )
+    list_filter = ('issue__year', 'issue', 'page', )
+    # raw_id_fields = ('issue', )
+    # list_display = ('title', 'issue', 'page')
     
 
 admin.site.register(ArticleCategory)
