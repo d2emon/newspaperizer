@@ -22,10 +22,10 @@
 <ul>
 <li><a href="{% url 'issue' article.issue.newspaper.slug article.issue.year article.issue.issue %}">{{ article.issue }}</a></li>
 {% for a in article.linked.all %}
-<li><a href="{{ a.url }}">{{ a.unempty_title }}</a></li>
+<li><a href="{{ a.url }}">{{ a.page }} - {{ a.unempty_title }}</a></li>
 {% endfor %}
 {% for a in article.issue.article_set.all %}
-<li><a href="{{ a.url }}">{{ a.unempty_title }}</a></li>
+<li><a href="{{ a.url }}">{{ a.page }} - {{ a.unempty_title }}</a></li>
 {% endfor %}
 </ul>
 {% endif %}
