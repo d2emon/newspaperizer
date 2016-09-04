@@ -9,7 +9,7 @@
 {% if object_list %}
 <ul>
 {% for issue in object_list %}
-<li><a href="{% url 'issue' issue.newspaper.slug issue.year issue.issue  %}">{{ issue }}</a></li>
+<li><a href="{{ issue.url  }}">{{ issue }}</a></li>
 {% endfor %}
 </ul>
 {% else %}

@@ -4,7 +4,7 @@
                 <li><a href="{% url 'newspapers' %}" class="">Newspapers</a></li>
                 <li><a href="{% url 'year' article.issue.newspaper.slug %}" class="">{{ article.issue.newspaper.title }}</a></li>
                 <li><a href="{% url 'issues' article.issue.newspaper.slug article.issue.year %}" class="">{{ article.issue.year }}</a></li>
-                <li><a href="{% url 'issue' article.issue.newspaper.slug article.issue.year article.issue.issue %}" class="">{{ article.issue }}</a></li>
+                <li><a href="{{ article.issue.url }}" class="">{{ article.issue }}</a></li>
 {% endblock %}
 {% block content %}
 <h1>{{ article.title }}</h1>
@@ -24,12 +24,17 @@
 {% for a in article.linked.all %}
 <li><a href="{{ a.url }}">{{ a.page }} - {{ a.unempty_title }}</a></li>
 {% endfor %}
-{% for a in article.issue.article_set.all %}
-<li><a href="{{ a.url }}">{{ a.page }} - {{ a.unempty_title }}</a></li>
-{% endfor %}
 </ul>
 {% endif %}
 
 {{ article.text }}
 </div>
+
+<h5>Contents:</h5>
+<ul>
+{% for a in article.issue.article_set.all %}
+<li><a href="{{ a.url }}">{{ a.page }} - {{ a.unempty_title }}</a></li>
+{% endfor %}
+</ul>
+
 {% endblock %}

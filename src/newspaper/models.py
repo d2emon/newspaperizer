@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.urlresolvers import reverse
 
     
 class Newspaper(models.Model):
@@ -49,8 +50,8 @@ class Issue(models.Model):
     def __str__(self):
         return self.__unicode__()
     
-    def get_absolute_url(self):
-        return "/newspaper/{}/{}/{}".format(self.newspaper.id, self.year.year, self.issue)
+    def url(self):
+        return reverse('issue', args=[self.newspaper.slug, self.year, self.issue])    
     
     class Meta:
         ordering = ['newspaper', 'year', 'issue']
