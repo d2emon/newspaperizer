@@ -11,7 +11,7 @@ class ArticleDetailView(DetailView):
         issue_id = self.kwargs.get('issue')
         page_id = self.kwargs.get('page')
                 
-        np = Newspaper.objects.get(pk=newspaper_id)
+        np = Newspaper.objects.get(slug=newspaper_id)
         year = Year.objects.get(year=year_id)
         issue = Issue.objects.get(newspaper=np, year=year, issue=issue_id)
         

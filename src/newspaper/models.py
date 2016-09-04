@@ -3,7 +3,8 @@ from django.db import models
     
 class Newspaper(models.Model):
     title = models.CharField(max_length=255)
-    description = models.TextField(max_length=10000)
+    description = models.TextField(max_length=10000, blank=True)
+    slug = models.SlugField(unique=True)
     # issues = models.ManyToManyField('Issue')
     
     def __unicode__(self):

@@ -30,7 +30,8 @@
         <div class="container">
             <div class="brand">Newspapers</div>
             <ul class="nav">
-                <li><a href="{% url 'list' %}" class="">Список постов</a></li>
+                <li><a href="{% url 'newspapers' %}" class="">Newspaper list</a></li>
+                {% block menu %}{% endblock %}
             </ul>
         </div>
     </div>

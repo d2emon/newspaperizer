@@ -9,6 +9,7 @@ class IssueInline(admin.TabularInline):
 
 class NewspaperAdmin(admin.ModelAdmin):
     inlines = [IssueInline]
+    prepopulated_fields = {'slug' : ('title', )}
 
 
 admin.site.register(Issue)
