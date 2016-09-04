@@ -66,5 +66,19 @@ class Article(models.Model):
     def url(self):
         return reverse('article', args=[self.issue.newspaper.slug, self.issue.year, self.issue.issue, self.page])
     
+    def prev(self):
+        page = self.issue.article_set.filter(page__lt=self.page).order_by('-page')
+        if page.count():
+            return page[0]
+        else:
+            return False
+    
+    def next(self):
+        page = self.issue.article_set.filter(page__gt=self.page).order_by('page')
+        if page.count():
+            return page[0]
+        else:
+            return False
+    
     class Meta:
         ordering = ['issue', 'page', 'title']        
