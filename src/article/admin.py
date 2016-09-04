@@ -7,6 +7,7 @@ class ArticleAdmin(admin.ModelAdmin):
         ('Newspaper', {'fields': (('issue', 'page'), 'category')}),
         ('Type', {'fields': ('article_type', )}),
         ('Content', {'fields': ('title', 'description')}),
+        ('Links', {'fields': ('linked', )})
     )
     list_filter = ('issue__year', 'issue', 'page', )
     # raw_id_fields = ('issue', )

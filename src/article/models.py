@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.urlresolvers import reverse
 
 
 TEXT_ARTICLE = 1
@@ -31,6 +32,9 @@ class ArticleType(models.Model):
     
     def is_links(self):
         return self.pk == LINKS_ARTICLE 
+    
+    def is_notes(self):
+        return self.pk == NOTES_ARTICLE 
    
     
 class Article(models.Model):
@@ -38,6 +42,7 @@ class Article(models.Model):
     issue = models.ForeignKey('newspaper.Issue', null=True)
     category = models.ForeignKey('ArticleCategory', null=True)
     article_type = models.ForeignKey('ArticleType', null=False)
+    linked = models.ManyToManyField('Article')
     page = models.IntegerField(default=1)
     description = models.TextField(max_length=10000, null=True, blank=True)
     
@@ -48,10 +53,18 @@ class Article(models.Model):
         return self.__unicode__()
     
     def text(self):
-        if self.article_type.pk == NOTES_ARTICLE:
+        if self.article_type.is_notes():
             return "NOTES\n{}".format(self.description)
         else:
             return self.description
+        
+    def unempty_title(self):
+        if self.title:
+            return self.title
+        return self.category.title
+    
+    def url(self):
+        return reverse('article', args=[self.issue.newspaper.slug, self.issue.year, self.issue.issue, self.page])
     
     class Meta:
         ordering = ['issue', 'page', 'title']        
