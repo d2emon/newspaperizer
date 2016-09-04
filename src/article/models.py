@@ -42,7 +42,7 @@ class Article(models.Model):
     issue = models.ForeignKey('newspaper.Issue', null=True)
     category = models.ForeignKey('ArticleCategory', null=True)
     article_type = models.ForeignKey('ArticleType', null=False)
-    linked = models.ManyToManyField('Article')
+    linked = models.ManyToManyField('Article', blank=True)
     page = models.IntegerField(default=1)
     description = models.TextField(max_length=10000, null=True, blank=True)
     
