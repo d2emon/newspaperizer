@@ -24,4 +24,7 @@ class Article(models.Model):
         return "{} ({}, {} - {})".format(self.title, self.issue, self.page, self.category.title)
         
     def __str__(self):
-        return self.__unicode__()        
+        return self.__unicode__()
+    
+    class Meta:
+        ordering = ['issue', 'page', 'title']        

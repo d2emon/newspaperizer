@@ -18,6 +18,9 @@ class Newspaper(models.Model):
     def get_years(self):
         return self.issue_set.all()
     
+    class Meta:
+        ordering = ['title', ]
+    
 
 class Year(models.Model):
     year = models.IntegerField()
@@ -28,6 +31,9 @@ class Year(models.Model):
     
     def __str__(self):
         return self.__unicode__()
+    
+    class Meta:
+        ordering = ['year', ]
 
     
 class Issue(models.Model):
@@ -44,3 +50,6 @@ class Issue(models.Model):
     
     def get_absolute_url(self):
         return "/newspaper/{}/{}/{}".format(self.newspaper.id, self.year.year, self.issue)
+    
+    class Meta:
+        ordering = ['newspaper', 'year', 'issue']
