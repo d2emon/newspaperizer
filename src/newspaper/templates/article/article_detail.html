@@ -7,15 +7,16 @@
                 <li><a href="{{ article.issue.url }}" class="">{{ article.issue }}</a></li>
 {% endblock %}
 {% block content %}
-<h1>{{ article.title }}</h1>
 <div>
 	<div>
 		<a href="{% url 'issue' article.issue.newspaper.slug article.issue.year article.issue.issue  %}">{{ article.issue }}</a>
+		{{ issue.date }}
 	</div>
 	<div>
 		{{ article.category.title }}
 	</div>
 </div>
+<h1>{{ article.unempty_title }}</h1>
 
 <div>
 {% if article.article_type.is_links %}

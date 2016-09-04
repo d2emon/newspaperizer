@@ -7,6 +7,9 @@
 {% endblock %}
 {% block content %}
 <h1>{{ issue }}</h1>
+<div>
+{{ issue.date }}
+</div>
 {% if object_list %}
 <ul>
 {% for article in object_list %}

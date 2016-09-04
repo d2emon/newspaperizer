@@ -41,6 +41,7 @@ class Year(models.Model):
 class Issue(models.Model):
     newspaper = models.ForeignKey('Newspaper', null=True)
     year = models.ForeignKey('Year', null=True)
+    date = models.DateField()
     issue = models.IntegerField(default=0)
     description = models.CharField(max_length=255, blank=True)
     
