@@ -1,6 +1,7 @@
 from django.views.generic import ListView
 from newspaper.models import Newspaper, Year, Issue
 from article.models import Article
+from django.shortcuts import redirect
 
 
 def get_newspaper(slug):
@@ -75,6 +76,8 @@ class ArticleListView(ListView):
         return self.kwargs.get('issue')
 
     def get_queryset(self):
+        print('QuerySet')
+        print(self.kwargs)
         np = get_newspaper(self.newspaper_id())
         year = get_year(self.year_id())
         issue = get_issue(np, year, self.issue_id())
@@ -93,3 +96,13 @@ class ArticleListView(ListView):
             "issue": issue,                        
         })
         return context
+    
+    def dispatch(self, request, *args, **kwargs):
+        np = get_newspaper(self.newspaper_id())
+        year = get_year(self.year_id())
+        issue = get_issue(np, year, self.issue_id())
+
+        try:
+            return redirect(issue.title_page().url())
+        except Article.DoesNotExist:
+            return super(ArticleListView, self).dispatch(request, *args, **kwargs)

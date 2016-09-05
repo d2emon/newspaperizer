@@ -8,40 +8,48 @@
 {% endblock %}
 {% block content %}
 <div>
-	<div>
-		<a href="{% url 'issue' article.issue.newspaper.slug article.issue.year article.issue.issue  %}">{{ article.issue }}</a>
-		{{ issue.date }}
-	</div>
-	<div>
-		{{ article.category.title }}
-	</div>
-
 	<ul>
 		<li>{% if article.prev %}<a href="{{ article.prev.url }}">&lt;&lt; {{ article.prev.unempty_title }}</a>{% else %}&lt;&lt;{% endif %}</li>
 		<li>{% if article.next %}<a href="{{ article.next.url }}">&gt;&gt; {{ article.next.unempty_title }}</a>{% else %}&gt;&gt;{% endif %}</li>
 	</ul>
+	{% if article.article_type.is_links %}
+	<div>
+		{{ article.issue.date }}
+	</div>
+	<h1>{{ article.issue }}</h1>
+	{% else %}
+	<div>
+		<a href="{% url 'issue' article.issue.newspaper.slug article.issue.year article.issue.issue  %}">{{ article.issue }}</a>
+		{{ article.issue.date }}
+		<div>
+			{{ article.category.title }}
+		</div>
+	</div>
+	<h1>{{ article.unempty_title }}</h1>
+	{% endif %}
 </div>
-<h1>{{ article.unempty_title }}</h1>
 
 <div>
-{% if article.article_type.is_links %}
-<ul>
-<li><a href="{% url 'issue' article.issue.newspaper.slug article.issue.year article.issue.issue %}">{{ article.issue }}</a></li>
-{% for a in article.linked.all %}
-<li><a href="{{ a.url }}">{{ a.page }} - {{ a.unempty_title }}</a></li>
-{% endfor %}
-</ul>
-{% endif %}
-
-{{ article.text }}
+	{% if article.article_type.is_links %}
+	<ul>
+		<li><a href="{% url 'issue' article.issue.newspaper.slug article.issue.year article.issue.issue %}">{{ article.issue }}</a></li>
+		{% for a in article.linked.all %}
+		<li><a href="{{ a.url }}">{{ a.page }} - {{ a.unempty_title }}</a></li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+	
+	{{ article.text }}
 
 </div>
 
-<h5>Contents:</h5>
-<ul>
-{% for a in article.issue.article_set.all %}
-<li><a href="{{ a.url }}">{{ a.page }} - {{ a.unempty_title }}</a></li>
-{% endfor %}
-</ul>
+<div>
+	<h5>Contents:</h5>
+	<ul>
+		{% for a in article.issue.article_set.all %}
+		<li><a href="{{ a.url }}">{{ a.page }} - {{ a.unempty_title }}</a></li>
+		{% endfor %}
+	</ul>
+</div>
 
 {% endblock %}

@@ -52,7 +52,10 @@ class Issue(models.Model):
         return self.__unicode__()
     
     def url(self):
-        return reverse('issue', args=[self.newspaper.slug, self.year, self.issue])    
+        return reverse('issue', args=[self.newspaper.slug, self.year, self.issue]) 
+    
+    def title_page(self):
+        return self.article_set.get(page=1)   
     
     class Meta:
         ordering = ['newspaper', 'year', 'issue']
