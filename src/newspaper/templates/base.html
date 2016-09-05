@@ -1,4 +1,4 @@
-{% load static %}<!DOCTYPE html>
+{% load static %}{% load django_bootstrap_breadcrumbs %}<!DOCTYPE html>
 <html lang="ru">
     <head>
         <!-- {{STATIC_URL}} -->
@@ -54,6 +54,12 @@
 
 <div class="container">
 	<div>
+	{% block breadcrumbs %}
+    {% breadcrumb "Home" "/" %}
+    {% breadcrumb "Admin" "/admin" %}
+	{% endblock %}
+	{% render_breadcrumbs %}
+	
 	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
     {% block content %}Empty page{% endblock %}
 	</div> 

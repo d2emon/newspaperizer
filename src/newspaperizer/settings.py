@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_bootstrap_breadcrumbs',
     'article',
     'newspaper',
     'note',
@@ -125,3 +126,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+BREADCRUMBS_TEMPLATE = "django_bootstrap_breadcrumbs/bootstrap3.html"
