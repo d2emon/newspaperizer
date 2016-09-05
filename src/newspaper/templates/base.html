@@ -39,24 +39,25 @@
     </head>
 <body>
 
-<!-- div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <div class="brand">Newspaperizer</div>
-            <ul class="nav">
-                <li><a href="/" class="">Home</a></li>
-                {% block menu %}{% endblock %}
-            </ul>
-        </div>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+    	<div class="navbar-header">
+	        <div class="navbar-brand">Newspaperizer</div>
+    	</div>
+	    <div class="navbar-collapse collapse">
+	    	<ul class="nav navbar-nav">
+	    		<li><a href="/" class="">Home</a></li>
+	    		<li><a href="/admin" class="">Admin</a></li>
+	    		{% block menu %}{% endblock %}
+	    	</ul>
+	    </div>
     </div>
-
-</div -->
+</div>
 
 <div class="container">
 	<div>
 	{% block breadcrumbs %}
     {% breadcrumb "Home" "/" %}
-    {% breadcrumb "Admin" "/admin" %}
 	{% endblock %}
 	{% render_breadcrumbs %}
 	
