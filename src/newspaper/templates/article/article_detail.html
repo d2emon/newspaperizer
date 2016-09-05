@@ -1,17 +1,7 @@
-{% extends 'base.html' %}{% load django_bootstrap_breadcrumbs %} 
+{% extends 'article/article_list.html' %}{% load django_bootstrap_breadcrumbs %} 
 {% block title %} - {{ article }} {% endblock %} 
-{% block menu %}
-                <li><a href="{% url 'newspapers' %}" class="">Newspapers</a></li>
-                <li><a href="{% url 'year' article.issue.newspaper.slug %}" class="">{{ article.issue.newspaper.title }}</a></li>
-                <li><a href="{% url 'issues' article.issue.newspaper.slug article.issue.year %}" class="">{{ article.issue.year }}</a></li>
-                <li><a href="{{ article.issue.url }}" class="">{{ article.issue }}</a></li>
-{% endblock %}
 {% block breadcrumbs %}
 	{{ block.super }}
-	{% breadcrumb "Newspapers" "newspapers" %}
-	{% breadcrumb article.issue.newspaper.title "year" article.issue.newspaper.slug %}
-	{% breadcrumb article.issue.year "issues" article.issue.newspaper.slug article.issue.year %}
-	{% breadcrumb article.issue article.issue.url %}
 	{% breadcrumb article article.url %}
 {% endblock %}
 {% block content %}

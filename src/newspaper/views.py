@@ -55,10 +55,13 @@ class IssueListView(ListView):
         return self.model.objects.filter(newspaper=np, year=year).distinct()
     
     def get_context_data(self, **kwargs):
+        np = get_newspaper(self.newspaper_id())
+        year = get_year(self.year_id())
+        
         context = ListView.get_context_data(self, **kwargs)
         context.update({
-            "np": get_newspaper(self.newspaper_id()),                        
-            "year": get_year(self.year_id()),                        
+            "np": np,                        
+            "year": year,                        
         })
         return context
 
@@ -76,8 +79,6 @@ class ArticleListView(ListView):
         return self.kwargs.get('issue')
 
     def get_queryset(self):
-        print('QuerySet')
-        print(self.kwargs)
         np = get_newspaper(self.newspaper_id())
         year = get_year(self.year_id())
         issue = get_issue(np, year, self.issue_id())

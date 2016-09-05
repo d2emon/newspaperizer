@@ -1,40 +1,43 @@
-{% extends 'base.html' %} 
-{% block title %} - {{ issue }} {% endblock %} 
-{% block menu %}
-                <li><a href="{% url 'newspapers' %}" class="">Newspapers</a></li>
-                <li><a href="{% url 'year' issue.newspaper.slug %}" class="">{{ issue.newspaper.title }}</a></li>
-                <li><a href="{% url 'issues' issue.newspaper.slug issue.year  %}" class="">{{ issue.year }}</a></li>
+{% extends 'base.html' %} {% load django_bootstrap_breadcrumbs %}
+{% block title %} - {{ issue }} {% endblock %}
+{% block breadcrumbs %}
+	{{ block.super }}
+	{% breadcrumb "Newspapers" "newspapers" %}
+	{% breadcrumb issue.newspaper.title "year" issue.newspaper.slug %}
+	{% breadcrumb issue.year "issues" issue.newspaper.slug issue.year %}
+	{% breadcrumb issue article.issue.url %}
 {% endblock %}
 {% block content %}
 <div class="jumbotron">
-	<ul class="row">
-		<li class="col-md-6">&lt;&lt;</li>
-		<li class="col-md-6">{% if object_list.first %}<a href="{{ object_list.first.url }}">&gt;&gt; {{ object_list.first.unempty_title }}</a>{% else %}&gt;&gt;{% endif %}</li>
+	<ul class="container">
+		<li class="prev"><a class="btn btn-default"></a></li>
+		<li class="next"><a{% if object_list.first %} href="{{ object_list.first.url }}"{% endif %} class="btn btn-default">{% if object_list.first %}{{ object_list.first.unempty_title }}{% endif %}</a></li>
 	</ul>
-	<div>
-		{{ issue.date }}
+	<div class="container">
+		<h1 class="col-md-10">{{ issue }}</h1>
+		<div class="col-md-2">{{ issue.date }}</div>
 	</div>
-	<h1>{{ issue }}</h1>
 </div>
 
-<div>
-	
-	{{ issue.description}}
+<div class="container">
+	<div class="col-md-3">
+		<h5>Contents:</h5>
+		{% if object_list %}
+		<ul>
+			{% for a in object_list %}
+			<li><a href="{{ a.url }}">{{ a.page }} - {{ a.unempty_title }}</a></li>
+			{% endfor %}
+		</ul>
+		{% else %}
+		<div>Нет статей</div>
+		{% endif %}
+	</div>
+
+	<div class="col-md-9">
+		<div>
+		   	{{ issue.description }}
+		</div>
+	</div>
 </div>
-
-<div>
-
-	<h5>Contents:</h5>
-	{% if object_list %}
-	<ul>
-		{% for article in object_list %}
-		<li><a href="{{ article.url }}">{{ article.page }} - {{ article.unempty_title }}</a></li>
-		{% endfor %}
-	</ul>
-	{% else %}
-	<div>Нет статей</div>
-	{% endif %}
-</div>
-
 
 {% endblock %}
