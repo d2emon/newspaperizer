@@ -1,10 +1,7 @@
-{% extends 'base.html' %} {% load django_bootstrap_breadcrumbs %}
+{% extends '../newspaper/issue_list.html' %} {% load django_bootstrap_breadcrumbs %}
 {% block title %} - {{ issue }} {% endblock %}
 {% block breadcrumbs %}
 	{{ block.super }}
-	{% breadcrumb "Newspapers" "newspapers" %}
-	{% breadcrumb issue.newspaper.title "year" issue.newspaper.slug %}
-	{% breadcrumb issue.year "issues" issue.newspaper.slug issue.year %}
 	{% breadcrumb issue article.issue.url %}
 {% endblock %}
 {% block content %}
