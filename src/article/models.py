@@ -66,7 +66,6 @@ class Article(models.Model):
         else:
             return ''
         
-        
     def unempty_title(self):
         if self.title:
             return self.title
