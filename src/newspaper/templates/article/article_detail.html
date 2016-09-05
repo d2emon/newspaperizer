@@ -7,49 +7,61 @@
                 <li><a href="{{ article.issue.url }}" class="">{{ article.issue }}</a></li>
 {% endblock %}
 {% block content %}
-<div>
-	<ul>
-		<li>{% if article.prev %}<a href="{{ article.prev.url }}">&lt;&lt; {{ article.prev.unempty_title }}</a>{% else %}&lt;&lt;{% endif %}</li>
-		<li>{% if article.next %}<a href="{{ article.next.url }}">&gt;&gt; {{ article.next.unempty_title }}</a>{% else %}&gt;&gt;{% endif %}</li>
+<div class="jumbotron">
+	<ul class="container">
+		<li class="prev"><a{% if article.prev %} href="{{ article.prev.url }}"{% endif %} class="btn btn-default">{% if article.prev %}{{ article.prev.unempty_title }}{% endif %}</a></li>
+		<li class="next"><a{% if article.next %} href="{{ article.next.url }}"{% endif %} class="btn btn-default">{% if article.next %}{{ article.next.unempty_title }}{% endif %}</a></li>
 	</ul>
-	{% if article.article_type.is_links %}
-	<div>
-		{{ article.issue.date }}
-	</div>
-	<h1>{{ article.issue }}</h1>
-	{% else %}
-	<div>
-		<a href="{% url 'issue' article.issue.newspaper.slug article.issue.year article.issue.issue  %}">{{ article.issue }}</a>
-		{{ article.issue.date }}
-		<div>
-			{{ article.category.title }}
+	<div class="container">
+		{% if article.article_type.is_links %}
+		<h1 class="col-md-10">{{ article.issue }}</h1>
+		<div class="col-md-2">{{ article.issue.date }}</div>
+		{% else %}
+		<h1 class="col-md-10">{{ article.unempty_title }}</h1>
+		<div class="col-md-2">
+			<div>
+				<a href="{% url 'issue' article.issue.newspaper.slug article.issue.year article.issue.issue  %}"><h4>{{ article.issue }}</h4></a>
+				{{ article.issue.date }}
+			</div>
+			<h3>{{ article.category.title }}</h3>
 		</div>
+		{% endif %}
 	</div>
-	<h1>{{ article.unempty_title }}</h1>
-	{% endif %}
 </div>
 
-<div>
-	{% if article.article_type.is_links %}
-	<ul>
-		<li><a href="{% url 'issue' article.issue.newspaper.slug article.issue.year article.issue.issue %}">{{ article.issue }}</a></li>
-		{% for a in article.linked.all %}
-		<li><a href="{{ a.url }}">{{ a.page }} - {{ a.unempty_title }}</a></li>
-		{% endfor %}
-	</ul>
-	{% endif %}
+<div class="container">
+	<div class="col-md-3">
+		<h5>Contents:</h5>
+		<ul>
+			{% for a in article.issue.article_set.all %}
+			<li><a href="{{ a.url }}">{{ a.page }} - {{ a.unempty_title }}</a></li>
+			{% endfor %}
+		</ul>
+	</div>
+
+	<div class="col-md-9">
+		{% if article.article_type.is_links %}
+		<ul>
+			<li><a href="{{ article.issue.url }}">{{ article.issue }}</a></li>
+			{% for a in article.linked.all %}
+			<li><a href="{{ a.url }}">{{ a.unempty_title }}</a></li>
+			{% endfor %}
+		</ul>
+		
+		<div>
+		   	{{ article.issue.description }}
+		</div>
+		{% elif article.article_type.is_notes %}
+		<ul>
+			{% for n in article.note_set.all %}
+			<li><a href="{{ n.slug }}">{{ n.title }}</a></li>
+			{% endfor %}
+		</ul>
+		{% endif %}
+		
+		{{ article.text }}
 	
-	{{ article.text }}
-
-</div>
-
-<div>
-	<h5>Contents:</h5>
-	<ul>
-		{% for a in article.issue.article_set.all %}
-		<li><a href="{{ a.url }}">{{ a.page }} - {{ a.unempty_title }}</a></li>
-		{% endfor %}
-	</ul>
+	</div>
 </div>
 
 {% endblock %}

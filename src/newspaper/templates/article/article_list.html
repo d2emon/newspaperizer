@@ -6,10 +6,10 @@
                 <li><a href="{% url 'issues' issue.newspaper.slug issue.year  %}" class="">{{ issue.year }}</a></li>
 {% endblock %}
 {% block content %}
-<div>
-	<ul>
-		<li>&lt;&lt;</li>
-		<li>{% if object_list.first %}<a href="{{ object_list.first.url }}">&gt;&gt; {{ object_list.first.unempty_title }}</a>{% else %}&gt;&gt;{% endif %}</li>
+<div class="jumbotron">
+	<ul class="row">
+		<li class="col-md-6">&lt;&lt;</li>
+		<li class="col-md-6">{% if object_list.first %}<a href="{{ object_list.first.url }}">&gt;&gt; {{ object_list.first.unempty_title }}</a>{% else %}&gt;&gt;{% endif %}</li>
 	</ul>
 	<div>
 		{{ issue.date }}
