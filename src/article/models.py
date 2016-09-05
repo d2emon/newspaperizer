@@ -53,14 +53,25 @@ class Article(models.Model):
         return self.__unicode__()
     
     def text(self):
+        # if self.article_type.is_notes():
+            # return "NOTES\n{}".format(self.description)
+        
+        return self.description
+        
+    def notes_title(self):
         if self.article_type.is_notes():
-            return "NOTES\n{}".format(self.description)
+            return ''
+        elif self.note_set.count() >= 1:
+            return self.note_set.all()[0].title
         else:
-            return self.description
+            return ''
+        
         
     def unempty_title(self):
         if self.title:
             return self.title
+        elif self.notes_title():
+            return self.notes_title()
         return self.category.title
     
     def url(self):

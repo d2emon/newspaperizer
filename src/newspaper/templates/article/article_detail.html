@@ -51,15 +51,24 @@
 		<div>
 		   	{{ article.issue.description }}
 		</div>
-		{% elif article.article_type.is_notes %}
+		{% endif %}
+		
+		<div>
+		{{ article.text }}
+		</div>
+		
+		{% if article.note_set %}
 		<ul>
 			{% for n in article.note_set.all %}
-			<li><a href="{{ n.slug }}">{{ n.title }}</a></li>
+			<li>
+				<h5><a href="{{ n.slug }}">{{ n.title }}</a></h5>
+				<div>
+					{{ n.description }}
+				</div>
+			</li>
 			{% endfor %}
 		</ul>
 		{% endif %}
-		
-		{{ article.text }}
 	
 	</div>
 </div>
