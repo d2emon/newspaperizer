@@ -10,6 +10,7 @@ class ArticleAdmin(admin.ModelAdmin):
         ('Links', {'fields': ('linked', )})
     )
     list_filter = ('issue__year', 'issue', 'page', )
+    # date_hierarchy = 'issue_date' 
     # raw_id_fields = ('issue', )
     # list_display = ('title', 'issue', 'page')
     

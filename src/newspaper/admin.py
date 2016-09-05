@@ -1,17 +1,23 @@
 from django.contrib import admin
 from newspaper.models import Newspaper, Year, Issue
+from django.contrib.admin.templatetags.admin_list import date_hierarchy
 
 
 class IssueInline(admin.TabularInline):
     model = Issue
     extra = 3
+
+
+@admin.register(Issue)    
+class IssueAdmin(admin.ModelAdmin):
+    date_hierarchy = 'date' 
     
 
+@admin.register(Newspaper)    
 class NewspaperAdmin(admin.ModelAdmin):
     inlines = [IssueInline]
     prepopulated_fields = {'slug' : ('title', )}
 
 
-admin.site.register(Issue)
 admin.site.register(Year)
-admin.site.register(Newspaper, NewspaperAdmin)
+# admin.site.register(Newspaper, NewspaperAdmin)
