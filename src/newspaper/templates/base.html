@@ -47,6 +47,7 @@
 	    <div class="navbar-collapse collapse">
 	    	<ul class="nav navbar-nav">
 	    		<li><a href="/" class="">Home</a></li>
+	    		<li><a href="/newspaper/np" class="">Newspapers</a></li>
 	    		<li><a href="/admin" class="">Admin</a></li>
 	    		{% block menu %}{% endblock %}
 	    	</ul>
@@ -57,7 +58,6 @@
 <div class="container">
 	<div>
 	{% block breadcrumbs %}
-    {% breadcrumb "Home" "/" %}
 	{% endblock %}
 	{% render_breadcrumbs %}
 	
