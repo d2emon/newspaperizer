@@ -1,22 +1,20 @@
 {% extends 'base.html' %} {% load django_bootstrap_breadcrumbs %}
-{% block title %} - {{ np.title }} {% endblock %} 
+{% block title %} {{ np }} {% endblock %} 
 {% block breadcrumbs %}
 	{{ block.super }}
 	{% breadcrumb "Newspapers" "newspapers" %}
 	{% breadcrumb np.title "year" np.slug %}
 {% endblock %}
-{% block content %} 
-<div class="jumbotron">
+{% block pagehead %}
 	<ul class="container">
-		<li class="prev"><a{% if object_list.first %} href="{{ object_list.first.url }}"{% endif %} class="btn btn-default">{% if object_list.first %}{{ object_list.first }}{% endif %}</a></li>
-		<li class="next"><a{% if object_list.first %} href="{{ object_list.first.url }}"{% endif %} class="btn btn-default">{% if object_list.first %}{{ object_list.first }}{% endif %}</a></li>
+		<li class="prev">{% block prev %}<a{% if object_list.first %} href="{{ object_list.first.url }}"{% endif %} class="btn btn-default">{% if object_list.first %}{{ object_list.first }}{% endif %}</a>{% endblock %}</li>
+		<li class="next">{% block next %}<a{% if object_list.first %} href="{{ object_list.first.url }}"{% endif %} class="btn btn-default">{% if object_list.first %}{{ object_list.first }}{% endif %}</a>{% endblock %}</li>
 	</ul>
 	<div class="container">
-		<h1>{{ np.title }}</h1>
+		<h1 class="col-md-10">{% block pagetitle %}{{ np.title }}{% endblock %}</h1>
 	</div>
-</div>
-
-<div class="container">
+{% endblock %}
+{% block content %} 
 	<div class="col-md-3">
 
 		{% if object_list %}
@@ -35,6 +33,4 @@
 		   	{{ np.description }}
 		</div>
 	</div>
-</div>
-
 {% endblock %}

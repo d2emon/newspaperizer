@@ -1,33 +1,24 @@
 {% extends 'article/article_list.html' %}{% load django_bootstrap_breadcrumbs %} 
-{% block title %} - {{ article }} {% endblock %} 
+{% block title %} {{ article.unempty_title }} {% endblock %} 
 {% block breadcrumbs %}
 	{{ block.super }}
-	{% breadcrumb article article.url %}
+	{% breadcrumb article.unempty_title article.url %}
 {% endblock %}
-{% block content %}
-<div class="jumbotron">
-	<ul class="container">
-		<li class="prev"><a{% if article.prev %} href="{{ article.prev.url }}"{% endif %} class="btn btn-default">{% if article.prev %}{{ article.prev.unempty_title }}{% endif %}</a></li>
-		<li class="next"><a{% if article.next %} href="{{ article.next.url }}"{% endif %} class="btn btn-default">{% if article.next %}{{ article.next.unempty_title }}{% endif %}</a></li>
-	</ul>
-	<div class="container">
-		{% if article.article_type.is_links %}
-		<h1 class="col-md-10">{{ article.issue }}</h1>
-		<div class="col-md-2">{{ article.issue.date }}</div>
-		{% else %}
-		<h1 class="col-md-10">{{ article.unempty_title }}</h1>
-		<div class="col-md-2">
+{% block prev %}<a{% if article.prev %} href="{{ article.prev.url }}"{% endif %} class="btn btn-default">{% if article.prev %}{{ article.prev.unempty_title }}{% endif %}</a>{% endblock %}
+{% block next %}<a{% if article.next %} href="{{ article.next.url }}"{% endif %} class="btn btn-default">{% if article.next %}{{ article.next.unempty_title }}{% endif %}</a>{% endblock %}
+{% block pagetitle %}
+		{% if article.article_type.is_links %}{{ article.issue }}{% else %}{{ article.unempty_title }}{% endif %}
+{% endblock %}
+{% block pagesubtitle %}
 			<div>
-				<a href="{% url 'issue' article.issue.newspaper.slug article.issue.year article.issue.issue  %}"><h4>{{ article.issue }}</h4></a>
+				<a href="{{ issue.url }}"><h4>{{ article.issue }}</h4></a>
 				{{ article.issue.date }}
 			</div>
+		{% if not article.article_type.is_links %}
 			<h3>{{ article.category.title }}</h3>
-		</div>
 		{% endif %}
-	</div>
-</div>
-
-<div class="container">
+{% endblock %}	
+{% block content %}
 	<div class="col-md-3">
 		<h5>Contents:</h5>
 		<ul>
@@ -69,6 +60,4 @@
 		{% endif %}
 	
 	</div>
-</div>
-
 {% endblock %}

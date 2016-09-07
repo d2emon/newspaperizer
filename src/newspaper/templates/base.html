@@ -58,23 +58,28 @@
 <div class="container">
 
 	<div>
-	{% block breadcrumbs %}
-	{% breadcrumb "Home" "index" %}	
-	{% endblock %}
-	{% render_breadcrumbs %}
-	
-	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-    {% block content %}
-	<div class="jumbotron">
+		{% block breadcrumbs %}
+		{% breadcrumb "Home" "index" %}	
+		{% endblock %}
+		{% render_breadcrumbs %}
+		
+		{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+		<div class="jumbotron">
+		    {% block pagehead %}
+			<div class="container">
+				<h1>Wellcome to Newspaperizer</h1>
+			</div>
+			{% endblock %}
+		</div>
 		<div class="container">
-			<h1>Wellcome to Newspaperizer</h1>
+		    {% block content %}
+		    <h2>Contents:</h2>
 			<ul>
 				<li><a href="{% url "newspapers" %}">Newspapers</a></li>
 				<li><a href="/admin" %}">Admin</a></li>
 			</ul>
+			{% endblock %}
 		</div>
-	</div>
-	{% endblock %}
 	</div> 
 </div> <!-- container -->
 

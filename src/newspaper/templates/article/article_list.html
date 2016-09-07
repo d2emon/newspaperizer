@@ -1,22 +1,19 @@
 {% extends 'newspaper/issue_list.html' %} {% load django_bootstrap_breadcrumbs %}
-{% block title %} - {{ issue }} {% endblock %}
+{% block title %}{{ issue }}{% endblock %}
 {% block breadcrumbs %}
 	{{ block.super }}
 	{% breadcrumb issue article.issue.url %}
 {% endblock %}
-{% block content %}
-<div class="jumbotron">
-	<ul class="container">
-		<li class="prev"><a class="btn btn-default"></a></li>
-		<li class="next"><a{% if object_list.first %} href="{{ object_list.first.url }}"{% endif %} class="btn btn-default">{% if object_list.first %}{{ object_list.first.unempty_title }}{% endif %}</a></li>
-	</ul>
-	<div class="container">
-		<h1 class="col-md-10">{{ issue }}</h1>
-		<div class="col-md-2">{{ issue.date }}</div>
-	</div>
+{% block prev %}<a class="btn btn-default"></a>{% endblock %}
+{% block next %}<a{% if object_list.first %} href="{{ object_list.first.url }}"{% endif %} class="btn btn-default">{% if object_list.first %}{{ object_list.first }}{% endif %}</a>{% endblock %}
+{% block pagetitle %}{{ issue }}{% endblock %}
+{% block pagesubtitle %}
+<div>
+	<a href="{% url 'issue' issue.newspaper.slug issue.year issue.issue  %}"><h4>{{ issue }}</h4></a>
+	{{ issue.date }}
 </div>
-
-<div class="container">
+{% endblock %}		
+{% block content %}
 	<div class="col-md-3">
 		<h5>Contents:</h5>
 		{% if object_list %}
@@ -35,6 +32,5 @@
 		   	{{ issue.description }}
 		</div>
 	</div>
-</div>
 
 {% endblock %}
