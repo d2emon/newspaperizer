@@ -38,8 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_bootstrap_breadcrumbs',
-    'article',
+    'index',
     'newspaper',
+    'article',
     'note',
 ]
 

@@ -3,7 +3,7 @@
     <head>
         <!-- {{STATIC_URL}} -->
         <meta charset="utf-8" />
-        <title>Newspaperizer{% block title %}{% endblock %}</title>
+        <title>{% block title %}Newspaperizer{% endblock %}</title>
         <link href="{% static "/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
         <style>
             body {
@@ -46,8 +46,8 @@
     	</div>
 	    <div class="navbar-collapse collapse">
 	    	<ul class="nav navbar-nav">
-	    		<li><a href="/" class="">Home</a></li>
-	    		<li><a href="/newspaper/np" class="">Newspapers</a></li>
+	    		<li><a href="{% url "index" %}" class="">Home</a></li>
+	    		<li><a href="{% url "newspapers" %}" class="">Newspapers</a></li>
 	    		<li><a href="/admin" class="">Admin</a></li>
 	    		{% block menu %}{% endblock %}
 	    	</ul>
@@ -56,13 +56,25 @@
 </div>
 
 <div class="container">
+
 	<div>
 	{% block breadcrumbs %}
+	{% breadcrumb "Home" "index" %}	
 	{% endblock %}
 	{% render_breadcrumbs %}
 	
 	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-    {% block content %}Empty page{% endblock %}
+    {% block content %}
+	<div class="jumbotron">
+		<div class="container">
+			<h1>Wellcome to Newspaperizer</h1>
+			<ul>
+				<li><a href="{% url "newspapers" %}">Newspapers</a></li>
+				<li><a href="/admin" %}">Admin</a></li>
+			</ul>
+		</div>
+	</div>
+	{% endblock %}
 	</div> 
 </div> <!-- container -->
 
