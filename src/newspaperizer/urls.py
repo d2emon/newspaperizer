@@ -21,5 +21,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^newspaper/', include('newspaper.urls')),
     url(r'^article/', include('article.urls')),
-    url(r'^$', include('index.urls')),
+    url(r'^pdf/', include('pdf.urls')),
+    url(r'', include('index.urls')),
 ]
