@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'article',
     'note',
     'template',
+    'people',
 ]
 
 MIDDLEWARE = [
