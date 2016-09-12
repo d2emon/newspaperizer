@@ -27,6 +27,9 @@
 		{% else %}
     <h5>{% trans "Newspaper is empty" %}</h5>
 		{% endif %}
+    <div>
+      <div><a href="{% url "generate" np.slug year issue.issue %}" class="btn btn-default">{% trans "Generate" %}</a></div>
+    </div>
 	</div>
 
 	<div class="col-md-9">

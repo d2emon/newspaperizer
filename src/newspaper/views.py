@@ -1,6 +1,7 @@
 from django.views.generic import ListView
 from newspaper.models import Newspaper, Year, Issue
 from article.models import Article
+from template.models import ArticleTemplate
 from django.shortcuts import redirect
 
 
@@ -14,6 +15,43 @@ def get_year(year):
 
 def get_issue(np, year, issue):
     return Issue.objects.get(newspaper=np, year=year, issue=issue)
+
+
+def generate(request, **kwargs):
+    newspaper_id = kwargs.get('np')
+    year_id = kwargs.get('year')
+    issue_id = kwargs.get('issue')
+    np = get_newspaper(newspaper_id)
+    year = get_year(year_id)
+    issue = get_issue(np, year, issue_id)
+
+    templates = ArticleTemplate.objects.filter(newspaper=np).all()
+    print(kwargs)
+    for template in templates:
+        print()
+        print(template)
+        print(
+            template.category,
+            template.article_type,
+            template.page,
+        )
+        print()
+        page = Article(
+            issue=issue,
+            category=template.category,
+            article_type=template.article_type,
+            page=template.page,
+        )
+        print(page)
+        print()
+        print("Title: ", page.title)
+        print("Category: ", page.category)
+        print("Article Type: ", page.article_type)
+        # page.linked,
+        print(
+            page.description,
+        )
+    return redirect(issue.url())
 
 
 class NewspaperListView(ListView):

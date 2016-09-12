@@ -48,7 +48,7 @@ class ArticleType(models.Model):
 
 
 class Article(models.Model):
-    title = models.CharField(_('title'), max_length=255, null=True, blank=True)
+    title = models.CharField(_('title'), max_length=255, null=True, blank=True, default="")
     issue = models.ForeignKey('newspaper.Issue', verbose_name=_('issue'), null=True)
     category = models.ForeignKey('ArticleCategory', verbose_name=_('category'), null=True)
     article_type = models.ForeignKey('ArticleType', verbose_name=_('type'), null=False)
@@ -57,7 +57,10 @@ class Article(models.Model):
     description = models.TextField(_('description'), max_length=10000, null=True, blank=True)
 
     def __unicode__(self):
-        return "{} ({}, {} - {})".format(self.title, self.issue, self.page, self.category.title)
+        cat = str(self.page)
+        if self.category:
+            cat += " - " + self.category.title
+        return "{}({}, {})".format(self.title, self.issue, cat)
 
     def __str__(self):
         return self.__unicode__()
