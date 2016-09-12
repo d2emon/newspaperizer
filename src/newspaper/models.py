@@ -14,11 +14,23 @@ class Newspaper(models.Model):
     def __str__(self):
         return self.__unicode__()
 
-    def get_absolute_url(self):
-        return "/newspaper/{}/".format(self.id)
-
     def get_years(self):
         return self.issue_set.all()
+
+    def url(self):
+        return reverse('year', args=[self.slug])
+
+    def prev(self):
+        try:
+            return Newspaper.objects.filter(id__lt=self.id).order_by('-id')[0]
+        except (IndexError):
+            return None
+
+    def next(self):
+        try:
+            return Newspaper.objects.filter(id__gt=self.id).order_by('id')[0]
+        except (IndexError):
+            return None
 
     class Meta:
         verbose_name = _('newspaper')
@@ -34,6 +46,22 @@ class Year(models.Model):
 
     def __str__(self):
         return self.__unicode__()
+
+    def prev(self):
+        try:
+            print("LT")
+            print(Year.objects.filter(year__lt=self.year).order_by('-year'))
+            return Year.objects.filter(year__lt=self.year).order_by('-year')[0]
+        except (IndexError):
+            return None
+
+    def next(self):
+        try:
+            print("GT")
+            print(Year.objects.filter(year__gt=self.year).order_by('year'))
+            return Year.objects.filter(year__gt=self.year).order_by('year')[0]
+        except (IndexError):
+            return None
 
     class Meta:
         verbose_name = _('year')

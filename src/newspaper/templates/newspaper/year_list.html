@@ -8,8 +8,8 @@
 {% endblock %}
 {% block pagehead %}
 	<ul class="container">
-		<li class="prev">{% block prev %}<a{% if object_list.first %} href="{{ object_list.first.url }}"{% endif %} class="btn btn-default">{% if object_list.first %}{{ object_list.first }}{% endif %}</a>{% endblock %}</li>
-		<li class="next">{% block next %}<a{% if object_list.first %} href="{{ object_list.first.url }}"{% endif %} class="btn btn-default">{% if object_list.first %}{{ object_list.first }}{% endif %}</a>{% endblock %}</li>
+		<li class="prev">{% block prev %}<a{% if np.prev %} href="{{ np.prev.url }}"{% endif %} class="btn btn-default">{% if np.prev %}{{ np.prev }}{% endif %}</a>{% endblock %}</li>
+    <li class="next">{% block next %}<a{% if np.next %} href="{{ np.next.url }}"{% endif %} class="btn btn-default">{% if np.next %}{{ np.next }}{% endif %}</a>{% endblock %}</li>
 	</ul>
 	<div class="container">
     <h1 class="col-md-10">{% block pagetitle %}{{ np.title }}{% endblock %}</h1>

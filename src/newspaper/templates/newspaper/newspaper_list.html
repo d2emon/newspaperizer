@@ -6,8 +6,13 @@
 	{{ block.super }}
 	{% breadcrumb "Newspapers" "newspapers" %}
 {% endblock %}
- {% block content %}
-   <h2>{% trans "Newspapers" %}</h2>
+{% block pagehead %}
+<div class="container">
+  <h1 class="col-md-10">{% trans "Newspapers" %}</h1>
+</div>
+{% endblock %}
+{% block content %}
+  <h2>{% trans "Newspapers" %}</h2>
 {% if object_list %}
 <ul>
 	{% for newspaper in object_list %}
