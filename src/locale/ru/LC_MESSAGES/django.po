@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-12 11:56+0000\n"
+"POT-Creation-Date: 2016-09-12 12:11+0000\n"
 "PO-Revision-Date: 2016-09-12 13:42+0300\n"
 "Last-Translator: Dmitry Kutsenko <d2emoium@gmail.com>\n"
 "Language: ru\n"
@@ -18,21 +18,63 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
+#: article/models.py:13 article/models.py:29 article/models.py:50
 #: newspaper/models.py:7
 msgid "title"
 msgstr "название"
 
+#: article/models.py:14 newspaper/models.py:24 newspaper/models.py:45
+msgid "newspaper"
+msgstr "газета"
+
+#: article/models.py:15 article/models.py:30 article/models.py:56
 #: newspaper/models.py:8 newspaper/models.py:49
 msgid "description"
 msgstr "описание"
 
+#: article/models.py:24 article/models.py:52
+msgid "category"
+msgstr "рубрика"
+
+#: article/models.py:25
+msgid "categories"
+msgstr "рубрики"
+
+#: article/models.py:45
+msgid "article type"
+msgstr "тип статьи"
+
+#: article/models.py:46
+msgid "article_types"
+msgstr "типы статей"
+
+#: article/models.py:51 newspaper/models.py:48 newspaper/models.py:64
+msgid "issue"
+msgstr "выпуск"
+
+#: article/models.py:53
+msgid "type"
+msgstr "тип"
+
+#: article/models.py:54
+msgid "linked articles"
+msgstr "связанные статьи"
+
+#: article/models.py:55
+msgid "page"
+msgstr "страница"
+
+#: article/models.py:103
+msgid "article"
+msgstr "статья"
+
+#: article/models.py:104
+msgid "articles"
+msgstr "статьи"
+
 #: newspaper/models.py:9
 msgid "slug"
 msgstr "ссылка"
-
-#: newspaper/models.py:24 newspaper/models.py:45
-msgid "newspaper"
-msgstr "газета"
 
 #: newspaper/models.py:25
 msgid "newspapers"
@@ -49,10 +91,6 @@ msgstr "годы"
 #: newspaper/models.py:47
 msgid "date"
 msgstr "дата"
-
-#: newspaper/models.py:48 newspaper/models.py:64
-msgid "issue"
-msgstr "выпуск"
 
 #: newspaper/models.py:65
 msgid "issues"
