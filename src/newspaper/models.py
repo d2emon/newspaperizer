@@ -49,16 +49,12 @@ class Year(models.Model):
 
     def prev(self):
         try:
-            print("LT")
-            print(Year.objects.filter(year__lt=self.year).order_by('-year'))
             return Year.objects.filter(year__lt=self.year).order_by('-year')[0]
         except (IndexError):
             return None
 
     def next(self):
         try:
-            print("GT")
-            print(Year.objects.filter(year__gt=self.year).order_by('year'))
             return Year.objects.filter(year__gt=self.year).order_by('year')[0]
         except (IndexError):
             return None
