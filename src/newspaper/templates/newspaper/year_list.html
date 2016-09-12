@@ -1,8 +1,9 @@
-{% extends 'base.html' %} {% load django_bootstrap_breadcrumbs %}
+{% extends 'newspaper/newspaper_list.html' %} 
+{% load django_bootstrap_breadcrumbs %}
+{% load i18n %}
 {% block title %} {{ np }} {% endblock %} 
 {% block breadcrumbs %}
 	{{ block.super }}
-	{% breadcrumb "Newspapers" "newspapers" %}
 	{% breadcrumb np.title "year" np.slug %}
 {% endblock %}
 {% block pagehead %}
@@ -11,7 +12,7 @@
 		<li class="next">{% block next %}<a{% if object_list.first %} href="{{ object_list.first.url }}"{% endif %} class="btn btn-default">{% if object_list.first %}{{ object_list.first }}{% endif %}</a>{% endblock %}</li>
 	</ul>
 	<div class="container">
-		<h1 class="col-md-10">{% block pagetitle %}{{ np.title }}{% endblock %}</h1>
+    <h1 class="col-md-10">{% block pagetitle %}{{ np.title }}{% endblock %}</h1>
 	</div>
 {% endblock %}
 {% block content %} 
@@ -24,7 +25,7 @@
 			{% endfor %}
 		</ul>		
 		{% else %}
-		<div>Нет статей</div>
+    <div>{% trans "No newspapers" %}</div>
 		{% endif %}
 	</div>
 

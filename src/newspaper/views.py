@@ -18,27 +18,27 @@ def get_issue(np, year, issue):
 
 class NewspaperListView(ListView):
     model = Newspaper
-    
-    
+
+
 class YearListView(ListView):
-    model = Year   
-    
+    model = Year
+
     def newspaper_id(self):
         return self.kwargs.get('np')
 
     def get_queryset(self):
         np = get_newspaper(self.newspaper_id())
-        
+
         return self.model.objects.filter(issue__newspaper=np).distinct()
-    
+
     def get_context_data(self, **kwargs):
         context = ListView.get_context_data(self, **kwargs)
         context.update({
-            "np": get_newspaper(self.kwargs.get('np')),                        
+            "np": get_newspaper(self.kwargs.get('np')),
         })
         return context
 
-    
+
 class IssueListView(ListView):
     model = Issue
 
@@ -51,21 +51,21 @@ class IssueListView(ListView):
     def get_queryset(self):
         np = get_newspaper(self.newspaper_id())
         year = get_year(self.year_id())
-        
+
         return self.model.objects.filter(newspaper=np, year=year).distinct()
-    
+
     def get_context_data(self, **kwargs):
         np = get_newspaper(self.newspaper_id())
         year = get_year(self.year_id())
-        
+
         context = ListView.get_context_data(self, **kwargs)
         context.update({
-            "np": np,                        
-            "year": year,                        
+            "np": np,
+            "year": year,
         })
         return context
 
-    
+
 class ArticleListView(ListView):
     model = Article
 
@@ -82,22 +82,22 @@ class ArticleListView(ListView):
         np = get_newspaper(self.newspaper_id())
         year = get_year(self.year_id())
         issue = get_issue(np, year, self.issue_id())
-        
+
         return self.model.objects.filter(issue=issue).distinct()
-    
+
     def get_context_data(self, **kwargs):
         np = get_newspaper(self.newspaper_id())
         year = get_year(self.year_id())
         issue = get_issue(np, year, self.issue_id())
-        
+
         context = ListView.get_context_data(self, **kwargs)
         context.update({
-            "np": np,                        
-            "year": year,                        
-            "issue": issue,                        
+            "np": np,
+            "year": year,
+            "issue": issue,
         })
         return context
-    
+
     def dispatch(self, request, *args, **kwargs):
         np = get_newspaper(self.newspaper_id())
         year = get_year(self.year_id())

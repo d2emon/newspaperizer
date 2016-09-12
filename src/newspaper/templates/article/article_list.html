@@ -1,4 +1,6 @@
-{% extends 'newspaper/issue_list.html' %} {% load django_bootstrap_breadcrumbs %}
+{% extends 'newspaper/issue_list.html' %} 
+{% load django_bootstrap_breadcrumbs %}
+{% load i18n %}
 {% block title %}{{ issue }}{% endblock %}
 {% block breadcrumbs %}
 	{{ block.super }}
@@ -15,15 +17,15 @@
 {% endblock %}		
 {% block content %}
 	<div class="col-md-3">
-		<h5>Contents:</h5>
 		{% if object_list %}
+    <h5>{% trans "Contents:" %}</h5>
 		<ul>
 			{% for a in object_list %}
 			<li><a href="{{ a.url }}">{{ a.page }} - {{ a.unempty_title }}</a></li>
 			{% endfor %}
 		</ul>
 		{% else %}
-		<div>Нет статей</div>
+    <h5>{% trans "Newspaper is empty" %}</h5>
 		{% endif %}
 	</div>
 

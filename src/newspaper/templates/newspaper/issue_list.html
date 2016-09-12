@@ -1,5 +1,7 @@
-{% extends 'newspaper/year_list.html' %} {% load django_bootstrap_breadcrumbs %}
-{% block title %} - {{ np.title }}'{{ year }} {% endblock %} 
+{% extends 'newspaper/year_list.html' %} 
+{% load django_bootstrap_breadcrumbs %}
+{% load i18n %}
+{% block title %}{{ np.title }}'{{ year }} {% endblock %} 
 {% block breadcrumbs %}
 	{{ block.super }}
 	{% breadcrumb year "issues" np.slug year %}
@@ -24,7 +26,7 @@
 			{% endfor %}
 		</ul>		
 		{% else %}
-		<div>Нет статей</div>
+    <div>{% trans "No newspapers" %}</div>
 		{% endif %}
 	</div>
 

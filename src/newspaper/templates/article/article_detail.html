@@ -1,4 +1,6 @@
-{% extends 'article/article_list.html' %}{% load django_bootstrap_breadcrumbs %} 
+{% extends 'article/article_list.html' %}
+{% load django_bootstrap_breadcrumbs %} 
+{% load i18n %}
 {% block title %} {{ article.unempty_title }} {% endblock %} 
 {% block breadcrumbs %}
 	{{ block.super }}
@@ -20,7 +22,7 @@
 {% endblock %}	
 {% block content %}
 	<div class="col-md-3">
-		<h5>Contents:</h5>
+    <h5>{% trans "Contents:" %}</h5>
 		<ul>
 			{% for a in article.issue.article_set.all %}
 			<li><a href="{{ a.url }}">{{ a.page }} - {{ a.unempty_title }}</a></li>
