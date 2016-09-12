@@ -7,7 +7,7 @@ class NoteInline(admin.TabularInline):
     extra = 5
 
 
-@admin.register(Article)    
+@admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
     fieldsets = (
         ('Newspaper', {'fields': (('issue', 'page'), 'category')}),
@@ -17,8 +17,8 @@ class ArticleAdmin(admin.ModelAdmin):
         # ('Notes', {'fields': ('notes', )}),
     )
     list_filter = ('issue__year', 'issue', 'page', )
-    inlines = [NoteInline]    
-    # date_hierarchy = 'issue_date' 
+    inlines = [NoteInline]
+    # date_hierarchy = 'issue_date'
     # raw_id_fields = ('issue', )
     # list_display = ('title', 'issue', 'page')
 

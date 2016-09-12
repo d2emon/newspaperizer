@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-12 12:11+0000\n"
+"POT-Creation-Date: 2016-09-12 12:20+0000\n"
 "PO-Revision-Date: 2016-09-12 13:42+0300\n"
 "Last-Translator: Dmitry Kutsenko <d2emoium@gmail.com>\n"
 "Language: ru\n"
@@ -19,7 +19,7 @@ msgstr ""
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: article/models.py:13 article/models.py:29 article/models.py:50
-#: newspaper/models.py:7
+#: newspaper/models.py:7 note/models.py:12
 msgid "title"
 msgstr "название"
 
@@ -28,7 +28,8 @@ msgid "newspaper"
 msgstr "газета"
 
 #: article/models.py:15 article/models.py:30 article/models.py:56
-#: newspaper/models.py:8 newspaper/models.py:49
+#: newspaper/models.py:8 newspaper/models.py:49 note/models.py:13
+#: note/models.py:36
 msgid "description"
 msgstr "описание"
 
@@ -68,11 +69,11 @@ msgstr "страница"
 msgid "article"
 msgstr "статья"
 
-#: article/models.py:104
+#: article/models.py:104 note/models.py:37
 msgid "articles"
 msgstr "статьи"
 
-#: newspaper/models.py:9
+#: newspaper/models.py:9 note/models.py:34
 msgid "slug"
 msgstr "ссылка"
 
@@ -128,3 +129,19 @@ msgstr "Добро пожаловать в Newspaperizer"
 #: newspaper/templates/newspaper/year_list.html:28
 msgid "No newspapers"
 msgstr "Газет нет"
+
+#: note/models.py:28 note/models.py:35
+msgid "note type"
+msgstr "тип заметки"
+
+#: note/models.py:29
+msgid "note types"
+msgstr "типы заметок"
+
+#: note/models.py:55
+msgid "note"
+msgstr "заметка"
+
+#: note/models.py:56
+msgid "notes"
+msgstr "заметки"
