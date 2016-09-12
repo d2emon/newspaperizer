@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'newspaper',
     'article',
     'note',
+    'template',
 ]
 
 MIDDLEWARE = [

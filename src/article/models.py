@@ -23,6 +23,7 @@ class ArticleCategory(models.Model):
     class Meta:
         verbose_name = _('category')
         verbose_name_plural = _('categories')
+        ordering = ['title']
 
 
 class ArticleType(models.Model):

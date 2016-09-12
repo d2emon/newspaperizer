@@ -49,7 +49,7 @@ class Issue(models.Model):
     description = models.CharField(_('description'), max_length=255, blank=True)
 
     def __unicode__(self):
-        return "{} {}'{} {}".format(self.newspaper, self.issue, self.year, self.description)
+        return "{} {}'{}".format(self.newspaper, self.issue, self.year)
 
     def __str__(self):
         return self.__unicode__()
