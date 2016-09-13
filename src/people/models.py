@@ -2,6 +2,11 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 
+SEX_UNKNOWN = 0
+SEX_MALE = 1
+SEX_FEMALE = 2
+
+
 class HairColor(models.Model):
     color = models.CharField(_('color'), max_length=255)
 
@@ -43,6 +48,22 @@ class EyeColor(models.Model):
         return self.__unicode__()
 
 
+class BreastSize(models.Model):
+    size = models.CharField(_('size'), max_length=255)
+
+    def __unicode__(self):
+        return self.size
+
+    def __str__(self):
+        return self.__unicode__()
+
+
+class Breast(models.Model):
+    person = models.OneToOneField('Female')
+    size = models.ForeignKey('BreastSize', verbose_name=_('breast size'), blank=True, null=True)
+    areola = models.IntegerField(verbose_name=_('areola'), blank=True)
+
+
 class Hair(models.Model):
     person = models.OneToOneField('Person', default=0)
 
@@ -82,6 +103,7 @@ class Person(models.Model):
     last_name = models.CharField(_('last name'), max_length=255, blank=True)
     nickname = models.CharField(_('nickname'), max_length=255, blank=True)
     slug = models.SlugField(_('slug'), unique=True)
+    sex = SEX_UNKNOWN
 
     body = models.CharField(_('body'), max_length=255, blank=True)
     arm = models.CharField(_('arm'), max_length=255, blank=True)
@@ -124,3 +146,19 @@ class Person(models.Model):
         verbose_name = _('person')
         verbose_name_plural = _('people')
         ordering = ['last_name', 'first_name', ]
+
+
+class Male(Person):
+    sex = SEX_MALE
+
+
+class Female(Person):
+    sex = SEX_FEMALE
+
+
+# class Conchita(Person):
+#    sex = models.IntegerField(_('sex'), choices=(
+#        (SEX_UNKNOWN, _('Unknown')),
+#        (SEX_MALE, _('Male')),
+#        (SEX_FEMALE, _('Female')),
+#    ), default=SEX_UNKNOWN)
