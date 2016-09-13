@@ -14,7 +14,7 @@ class BreastInline(admin.TabularInline):
     model = Breast
 
 
-class ClothInline(admin.TabularInline):
+class ClothInline(admin.StackedInline):
     model = Cloth
 
 

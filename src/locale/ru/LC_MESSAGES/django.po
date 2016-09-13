@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-12 12:20+0000\n"
+"POT-Creation-Date: 2016-09-13 11:14+0000\n"
 "PO-Revision-Date: 2016-09-12 13:42+0300\n"
 "Last-Translator: Dmitry Kutsenko <d2emoium@gmail.com>\n"
 "Language: ru\n"
@@ -18,22 +18,24 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: article/models.py:13 article/models.py:29 article/models.py:50
-#: newspaper/models.py:7 note/models.py:12
+#: article/models.py:13 article/models.py:30 article/models.py:51
+#: newspaper/models.py:7 note/models.py:12 note/models.py:33
+#: people/models.py:21
 msgid "title"
 msgstr "название"
 
-#: article/models.py:14 newspaper/models.py:24 newspaper/models.py:45
+#: article/models.py:14 newspaper/models.py:36 newspaper/models.py:69
+#: template/models.py:6
 msgid "newspaper"
 msgstr "газета"
 
-#: article/models.py:15 article/models.py:30 article/models.py:56
-#: newspaper/models.py:8 newspaper/models.py:49 note/models.py:13
-#: note/models.py:36
+#: article/models.py:15 article/models.py:31 article/models.py:57
+#: newspaper/models.py:8 newspaper/models.py:73 note/models.py:13
+#: note/models.py:36 people/models.py:114
 msgid "description"
 msgstr "описание"
 
-#: article/models.py:24 article/models.py:52
+#: article/models.py:24 article/models.py:53 template/models.py:7
 msgid "category"
 msgstr "рубрика"
 
@@ -41,59 +43,59 @@ msgstr "рубрика"
 msgid "categories"
 msgstr "рубрики"
 
-#: article/models.py:45
+#: article/models.py:46
 msgid "article type"
 msgstr "тип статьи"
 
-#: article/models.py:46
+#: article/models.py:47
 msgid "article_types"
 msgstr "типы статей"
 
-#: article/models.py:51 newspaper/models.py:48 newspaper/models.py:64
+#: article/models.py:52 newspaper/models.py:72 newspaper/models.py:88
 msgid "issue"
 msgstr "выпуск"
 
-#: article/models.py:53
+#: article/models.py:54 template/models.py:8
 msgid "type"
 msgstr "тип"
 
-#: article/models.py:54
+#: article/models.py:55
 msgid "linked articles"
 msgstr "связанные статьи"
 
-#: article/models.py:55
+#: article/models.py:56 template/models.py:9
 msgid "page"
 msgstr "страница"
 
-#: article/models.py:103
+#: article/models.py:107
 msgid "article"
 msgstr "статья"
 
-#: article/models.py:104 note/models.py:37
+#: article/models.py:108 note/models.py:37
 msgid "articles"
 msgstr "статьи"
 
-#: newspaper/models.py:9 note/models.py:34
+#: newspaper/models.py:9 note/models.py:34 people/models.py:105
 msgid "slug"
 msgstr "ссылка"
 
-#: newspaper/models.py:25
+#: newspaper/models.py:37
 msgid "newspapers"
 msgstr "газеты"
 
-#: newspaper/models.py:30 newspaper/models.py:39 newspaper/models.py:46
+#: newspaper/models.py:42 newspaper/models.py:63 newspaper/models.py:70
 msgid "year"
 msgstr "год"
 
-#: newspaper/models.py:40
+#: newspaper/models.py:64
 msgid "years"
 msgstr "годы"
 
-#: newspaper/models.py:47
+#: newspaper/models.py:71
 msgid "date"
 msgstr "дата"
 
-#: newspaper/models.py:65
+#: newspaper/models.py:89
 msgid "issues"
 msgstr "выпуски"
 
@@ -106,13 +108,18 @@ msgstr "В номере:"
 msgid "Newspaper is empty"
 msgstr "Газета пуста"
 
+#: newspaper/templates/article/article_list.html:31
+msgid "Generate"
+msgstr "Генерировать"
+
 #: newspaper/templates/base.html:49
 msgid "Home"
 msgstr ""
 
 #: newspaper/templates/base.html:50 newspaper/templates/base.html:78
 #: newspaper/templates/newspaper/newspaper_list.html:4
-#: newspaper/templates/newspaper/newspaper_list.html:10
+#: newspaper/templates/newspaper/newspaper_list.html:11
+#: newspaper/templates/newspaper/newspaper_list.html:15
 msgid "Newspapers"
 msgstr "Газеты"
 
@@ -125,7 +132,7 @@ msgid "Wellcome to Newspaperizer"
 msgstr "Добро пожаловать в Newspaperizer"
 
 #: newspaper/templates/newspaper/issue_list.html:29
-#: newspaper/templates/newspaper/newspaper_list.html:18
+#: newspaper/templates/newspaper/newspaper_list.html:23
 #: newspaper/templates/newspaper/year_list.html:28
 msgid "No newspapers"
 msgstr "Газет нет"
@@ -145,3 +152,131 @@ msgstr "заметка"
 #: note/models.py:56
 msgid "notes"
 msgstr "заметки"
+
+#: people/models.py:11 people/models.py:42 people/models.py:70
+msgid "color"
+msgstr "цвет"
+
+#: people/models.py:22 people/models.py:52
+msgid "size"
+msgstr "размер"
+
+#: people/models.py:32 people/models.py:72
+msgid "parting"
+msgstr "пробор"
+
+#: people/models.py:63
+msgid "breast size"
+msgstr "размер груди"
+
+#: people/models.py:64
+msgid "areola"
+msgstr "ареола"
+
+#: people/models.py:71
+msgid "haircut"
+msgstr "прическа"
+
+#: people/models.py:73
+msgid "curling"
+msgstr "вьющиеся"
+
+#: people/models.py:80
+msgid "eyebrow"
+msgstr "брови"
+
+#: people/models.py:81
+msgid "eye"
+msgstr "глаза"
+
+#: people/models.py:82
+msgid "ear"
+msgstr "ухо"
+
+#: people/models.py:83
+msgid "nose"
+msgstr "нос"
+
+#: people/models.py:84
+msgid "chick"
+msgstr "щека"
+
+#: people/models.py:85
+msgid "mouth"
+msgstr "рот"
+
+#: people/models.py:86
+msgid "lip"
+msgstr "губы"
+
+#: people/models.py:87
+msgid "chin"
+msgstr "подбородок"
+
+#: people/models.py:88
+msgid "neck"
+msgstr "шея"
+
+#: people/models.py:94
+msgid "head"
+msgstr "голова"
+
+#: people/models.py:95 people/models.py:108
+msgid "body"
+msgstr "тело"
+
+#: people/models.py:96
+msgid "belt"
+msgstr "пояс"
+
+#: people/models.py:97
+msgid "legs"
+msgstr "ноги"
+
+#: people/models.py:98
+msgid "feet"
+msgstr "ступни"
+
+#: people/models.py:102
+msgid "first name"
+msgstr "имя"
+
+#: people/models.py:103
+msgid "last name"
+msgstr "фамилия"
+
+#: people/models.py:104
+msgid "nickname"
+msgstr "псевдоним"
+
+#: people/models.py:109
+msgid "arm"
+msgstr "рука"
+
+#: people/models.py:110
+msgid "hand"
+msgstr "ладонь"
+
+#: people/models.py:111
+msgid "leg"
+msgstr "нога"
+
+#: people/models.py:112
+msgid "foot"
+msgstr "ступня"
+
+#: people/models.py:146
+msgid "person"
+msgstr "человек"
+
+#: people/models.py:147
+msgid "people"
+msgstr "люди"
+
+#: template/models.py:21
+msgid "article template"
+msgstr "шаблон статьи"
+
+#: template/models.py:22
+msgid "article templates"
+msgstr "шаблоны статей"
