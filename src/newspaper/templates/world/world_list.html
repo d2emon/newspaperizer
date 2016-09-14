@@ -23,16 +23,15 @@ $grid.imagesLoaded().progress(function() {
 {% endblock %}
 {% block content %}
 {% if object_list %}
-  <!-- div class="wall js-masonry" data-masonry-options='{ "itemSelector": ".brick", "columnWidth": 300, "outerWidth": 25}' -->
-  <div class="wall container">
-    <div class="brick"><a href="{% url "random_world" %}"><h1>{% trans "Random" %}</h1></a></div>
+  <ul class="wall container">
+    <li class="brick"><a href="{% url "random_world" %}"><h1>{% trans "Random" %}</h1></a></li>
 	{% for world in object_list %}
-    <div class="brick"><a href="{{ world.get_absolute_url }}">
+    <li class="brick"><a href="{{ world.get_absolute_url }}">
         <h5>{{ world.title }}</h5>
         {{ world.preview }}
-    </a></div>
+    </a></li>
 	{% endfor %}
-</div>
+  </ul>
 {% else %}
   <div>{% trans "No worlds" %}</div>
 {% endif %}
