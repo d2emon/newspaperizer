@@ -68,7 +68,7 @@ ROOT_URLCONF = 'newspaperizer.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': settings.get('template_dirs', []),
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -87,11 +87,11 @@ WSGI_APPLICATION = 'newspaperizer.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-DB_ROOT = settings.get('db_root')
+DB_ROOT = settings.get('db_root', os.path.join(BASE_DIR, 'db'))
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, "{}/db.sqlite3".format(DB_ROOT)),
+        'NAME': os.path.join(DB_ROOT, 'db.sqlite3')  # "{}db.sqlite3".format(DB_ROOT),
     }
 }
 
@@ -125,9 +125,9 @@ LANGUAGES = (
     ('ru', 'Russian'),
 )
 
-LOCALE_PATHS = (
-    settings.get('locale_root', 'locale'),
-)
+LOCALE_PATHS = settings.get('locale_root', (
+    os.path.join(BASE_DIR, 'locale'),
+))
 
 TIME_ZONE = 'UTC'
 
@@ -141,14 +141,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-MEDIA_URL = settings.get('media_url', '/images/')
-MEDIA_ROOT = settings.get('media_root', 'media/')
+MEDIA_URL = settings.get('media_url', '/media/')
+MEDIA_ROOT = settings.get('media_root', os.path.join(BASE_DIR, 'media'))
 
 STATIC_URL = settings.get('static_url', '/static/')
-STATICFILES_DIRS = [
-    settings.get('static_root', 'static/'),
-    os.path.join(BASE_DIR, "static"),
-]
+STATICFILES_DIRS = settings.get('staticfiles_dirs', [
+    os.path.join(BASE_DIR, 'static/'),
+])
 
 BREADCRUMBS_TEMPLATE = "django_bootstrap_breadcrumbs/bootstrap3.html"
 

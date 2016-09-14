@@ -1,6 +1,10 @@
 media_url: /web/
 static_url: /static/
 media_root: ../media/
-static_root: ../static/
 db_root: ../db/
-locale_root: ../locale/
+staticfiles_dirs:
+  - ../static/
+locale_paths:
+  - ../locale/
+template_dirs:
+  - ../templates/
