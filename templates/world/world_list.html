@@ -24,6 +24,7 @@ $grid.imagesLoaded().progress(function() {
 {% block content %}
   <ul class="wall container">
     <li class="brick"><a href="{% url "worlds_wiki" %}"><h1>Wiki</h1></a></li>
+    <li class="brick"><a href="{% url "world_orphans" %}"><h1>{% trans "Orphans" %}</h1></a></li>
 {% if object_list %}
     <li class="brick"><a href="{% url "random_world" %}"><h1>{% trans "Random" %}</h1></a></li>
 	{% for world in object_list %}

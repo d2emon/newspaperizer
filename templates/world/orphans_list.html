@@ -1,0 +1,34 @@
+{% extends 'world/world_list.html' %} 
+{% load django_bootstrap_breadcrumbs %}
+{% load i18n %}
+{% block jquery %}
+var $grid = $(".wall").masonry({
+  itemSelector: ".brick",
+  columnWidth: 300
+});
+
+$grid.imagesLoaded().progress(function() {
+  $grid.masonry('layout');
+});
+{% endblock %}
+{% block title %}{% trans "Orphans" %}{% endblock %} 
+{% block breadcrumbs %}
+	{{ block.super }}
+	{% breadcrumb "Orphans" "world_orphans" %}
+{% endblock %}
+{% block pagehead %}
+<div class="container">
+  <h1 class="col-md-10">{% trans "Orphans" %}</h1>
+</div>
+{% endblock %}
+{% block content %}
+{% if orphans %}
+  <ul class="wall container">
+	{% for orphan in orphans %}
+    <li class="brick"><a href="{{ orphan }}">
+        <h5>{{ orphan }}</h5>
+    </a></li>
+	{% endfor %}
+  </ul>
+{% endif %}
+{% endblock %}
