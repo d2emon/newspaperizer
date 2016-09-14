@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_bootstrap_breadcrumbs',
     'index',
+    'world',
     'newspaper',
     'article',
     'note',
@@ -133,6 +134,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
+
+MEDIA_URL = '/images/'
+
+MEDIA_ROOT = 'media/'
 
 STATIC_URL = '/static/'
 

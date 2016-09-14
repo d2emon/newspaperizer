@@ -1,0 +1,23 @@
+{% extends 'world/world_list.html' %}
+{% load django_bootstrap_breadcrumbs %} 
+{% load i18n %}
+{% block title %} {{ article.unempty_title }} {% endblock %} 
+{% block breadcrumbs %}
+	{{ block.super }}
+	{% breadcrumb world.title world.get_absolute_url %}
+{% endblock %}
+{% block prev %}<a{% if article.prev %} href="{{ article.prev.url }}"{% endif %} class="btn btn-default">{% if article.prev %}{{ article.prev.unempty_title }}{% endif %}</a>{% endblock %}
+{% block next %}<a{% if article.next %} href="{{ article.next.url }}"{% endif %} class="btn btn-default">{% if article.next %}{{ article.next.unempty_title }}{% endif %}</a>{% endblock %}
+{% block pagehead %}
+<div class="container">
+  <h1 class="col-md-10">
+    <img src="{{ world.image.url }}" alt="{{ world.title }}" />
+    {{ world.title }}
+  </h1>
+</div>
+{% endblock %}
+{% block content %}
+<div>
+{{ world.description | linebreaks }}
+</div>
+{% endblock %}

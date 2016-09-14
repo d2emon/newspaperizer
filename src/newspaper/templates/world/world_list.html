@@ -1,0 +1,39 @@
+{% extends 'base.html' %} 
+{% load django_bootstrap_breadcrumbs %}
+{% load i18n %}
+{% block jquery %}
+var $grid = $(".wall").masonry({
+  itemSelector: ".brick",
+  columnWidth: 300
+});
+
+$grid.imagesLoaded().progress(function() {
+  $grid.masonry('layout');
+});
+{% endblock %}
+{% block title %}{% trans "Worlds" %}{% endblock %} 
+{% block breadcrumbs %}
+	{{ block.super }}
+	{% breadcrumb "Worlds" "worlds" %}
+{% endblock %}
+{% block pagehead %}
+<div class="container">
+  <h1 class="col-md-10">{% trans "Worlds" %}</h1>
+</div>
+{% endblock %}
+{% block content %}
+{% if object_list %}
+  <!-- div class="wall js-masonry" data-masonry-options='{ "itemSelector": ".brick", "columnWidth": 300, "outerWidth": 25}' -->
+  <div class="wall container">
+    <div class="brick"><a href="{% url "random_world" %}"><h1>{% trans "Random" %}</h1></a></div>
+	{% for world in object_list %}
+    <div class="brick"><a href="{{ world.get_absolute_url }}">
+        <h5>{{ world.title }}</h5>
+        {{ world.preview }}
+    </a></div>
+	{% endfor %}
+</div>
+{% else %}
+  <div>{% trans "No worlds" %}</div>
+{% endif %}
+{% endblock %}
