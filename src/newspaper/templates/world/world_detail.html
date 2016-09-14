@@ -1,7 +1,7 @@
 {% extends 'world/world_list.html' %}
 {% load django_bootstrap_breadcrumbs %} 
 {% load i18n %}
-{% block title %} {{ article.unempty_title }} {% endblock %} 
+{% block title %} {{ world }} {% endblock %} 
 {% block breadcrumbs %}
 	{{ block.super }}
 	{% breadcrumb world.title world.get_absolute_url %}
