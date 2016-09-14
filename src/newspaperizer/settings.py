@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+import yaml
+import logging
+
+# Load settings from YAML
+settings = yaml.load(open('settings.yml'))
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -82,10 +87,11 @@ WSGI_APPLICATION = 'newspaperizer.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
+DB_ROOT = settings.get('db_root')
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db/db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, "{}/db.sqlite3".format(DB_ROOT)),
     }
 }
 
@@ -135,14 +141,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-MEDIA_URL = '/images/'
+MEDIA_URL = settings.get('media_url', '/images/')
+MEDIA_ROOT = settings.get('media_root', 'media/')
 
-MEDIA_ROOT = 'media/'
-
-STATIC_URL = '/static/'
-
+STATIC_URL = settings.get('static_url', '/static/')
 STATICFILES_DIRS = [
+    settings.get('static_root', 'static/'),
     os.path.join(BASE_DIR, "static"),
 ]
 
 BREADCRUMBS_TEMPLATE = "django_bootstrap_breadcrumbs/bootstrap3.html"
+
+# Debugging into logger
+
+if DEBUG:
+    logging.basicConfig(level=logging.DEBUG)
+logging.debug("Settings are %s", settings)

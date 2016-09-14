@@ -3,3 +3,4 @@ Django==1.10
 django-bootstrap-breadcrumbs==0.8
 six==1.10.0
 reportlab==3.3.0
+PyYAML==3.12

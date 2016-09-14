@@ -1,0 +1,5 @@
+media_url: /web/
+static_url: /static/
+media_root: ../media/
+static_root: ../static/
+db_root: ../db/
