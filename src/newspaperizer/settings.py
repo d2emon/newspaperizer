@@ -126,7 +126,7 @@ LANGUAGES = (
 )
 
 LOCALE_PATHS = (
-    'locale',
+    settings.get('locale_root', 'locale'),
 )
 
 TIME_ZONE = 'UTC'
