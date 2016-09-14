@@ -8,3 +8,6 @@ locale_paths:
   - ../locale/
 template_dirs:
   - ../templates/
+worlds:
+  images_root: ../media/worlds/__attach/
+  images_url: /web/worlds/__attach/

@@ -2,12 +2,20 @@ from django.db import models
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 from django.utils.safestring import mark_safe
+from newspaperizer.settings import settings
+from django.core.files.storage import FileSystemStorage
+
+
+image_fs = FileSystemStorage(
+    location=settings.get('worlds', dict()).get('images_root'),
+    base_url=settings.get('worlds', dict()).get('images_url'),
+)
 
 
 class World(models.Model):
     title = models.CharField(_('Title'), max_length=255, blank=False)
     slug = models.SlugField(_('Slug'), unique=True)
-    image = models.ImageField(verbose_name=_('Image'), upload_to='images')
+    image = models.ImageField(verbose_name=_('Image'), storage=image_fs)  # upload_to=settings.get('worlds', dict()).get('images', 'images'))
     description = models.TextField(_('Description'), max_length=10000, blank=True)
 
     def __unicode__(self):
