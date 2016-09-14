@@ -22,8 +22,9 @@ $grid.imagesLoaded().progress(function() {
 </div>
 {% endblock %}
 {% block content %}
-{% if object_list %}
   <ul class="wall container">
+    <li class="brick"><a href="{% url "worlds_wiki" %}"><h1>Wiki</h1></a></li>
+{% if object_list %}
     <li class="brick"><a href="{% url "random_world" %}"><h1>{% trans "Random" %}</h1></a></li>
 	{% for world in object_list %}
     <li class="brick"><a href="{{ world.get_absolute_url }}">
@@ -31,8 +32,6 @@ $grid.imagesLoaded().progress(function() {
         {{ world.preview }}
     </a></li>
 	{% endfor %}
-  </ul>
-{% else %}
-  <div>{% trans "No worlds" %}</div>
 {% endif %}
+  </ul>
 {% endblock %}

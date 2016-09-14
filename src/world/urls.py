@@ -5,7 +5,7 @@ from world.views import WorldListView, WikiListView, WorldDetailView, random_wor
 
 urlpatterns = [
     url(r'^$', WorldListView.as_view(), name='worlds'),
-    url(r'^wiki/$', WikiListView.as_view(), name='worlds_wiki'),
+    url(r'^__page.opt$', WikiListView.as_view(), name='worlds_wiki'),
     url(r'^random/$', random_world, name='random_world'),
     url(r'^(?P<slug>[\w-]+)/view/$', WorldDetailView.as_view(), name='world'),
 ]
