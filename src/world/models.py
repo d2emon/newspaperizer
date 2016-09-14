@@ -25,6 +25,10 @@ class World(models.Model):
 
     preview.short_description = _('Image')
 
+    def get_attach_filename(self):
+        import os
+        return os.path.basename(self.image.name)
+
     def prev(self):
         try:
             return World.objects.filter(id__lt=self.id).order_by('-id')[0]

@@ -13,5 +13,16 @@ class WorldListView(ListView):
     model = World
 
 
+class WikiListView(ListView):
+    model = World
+    template_name = 'world/wiki_list.html'
+
+    def get_queryset(self):
+        import logging
+        logging.debug(self.template_name)
+        # logging.debug(self.get_template_names())
+        return World.objects.all()
+
+
 class WorldDetailView(DetailView):
     model = World
