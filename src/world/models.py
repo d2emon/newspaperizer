@@ -12,6 +12,21 @@ image_fs = FileSystemStorage(
 )
 
 
+def load_wiki(path, title):
+    import re
+    try:
+        filename = "{}{}/__content.html".format(path, title)
+        html = open(filename, 'r').read()
+    except FileNotFoundError:
+        html = ''
+
+    found = re.search(r'<body>(.*)</body>', html, re.DOTALL)
+    if found:
+        return found.group(1)
+    else:
+        return _("Wiki {} not found".format(title))
+
+
 class World(models.Model):
     title = models.CharField(_('Title'), max_length=255, blank=False)
     slug = models.SlugField(_('Slug'), unique=True)
@@ -36,6 +51,9 @@ class World(models.Model):
     def get_attach_filename(self):
         import os
         return os.path.basename(self.image.name)
+
+    def get_wiki(self):
+        return load_wiki(settings.get('worlds', dict()).get('wiki_root'), self.title)
 
     def prev(self):
         try:
