@@ -6,8 +6,8 @@
 	{{ block.super }}
 	{% breadcrumb world.title world.get_absolute_url %}
 {% endblock %}
-{% block prev %}<a{% if article.prev %} href="{{ article.prev.url }}"{% endif %} class="btn btn-default">{% if article.prev %}{{ article.prev.unempty_title }}{% endif %}</a>{% endblock %}
-{% block next %}<a{% if article.next %} href="{{ article.next.url }}"{% endif %} class="btn btn-default">{% if article.next %}{{ article.next.unempty_title }}{% endif %}</a>{% endblock %}
+{% block prev %}<a{% if world.prev %} href="{{ world.prev.get_absolute_url }}"{% endif %} class="btn btn-default">{% if world.prev %}{{ world.prev.title }}{% endif %}</a>{% endblock %}
+{% block next %}<a{% if world.next %} href="{{ world.next.get_absolute_url }}"{% endif %} class="btn btn-default">{% if world.next %}{{ world.next.title }}{% endif %}</a>{% endblock %}
 {% block pagehead %}
 <div class="container">
   <h1 class="col-md-10">
