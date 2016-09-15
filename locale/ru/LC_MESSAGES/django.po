@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-15 05:12+0000\n"
+"POT-Creation-Date: 2016-09-15 05:42+0000\n"
 "PO-Revision-Date: 2016-09-15 05:12+0000\n"
 "Last-Translator: Dmitry Kutsenko <d2emonium@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -99,6 +99,79 @@ msgstr "дата"
 #: newspaper/models.py:89
 msgid "issues"
 msgstr "выпуски"
+
+#: newspaper/templates/article/article_detail.html:25
+#: newspaper/templates/article/article_list.html:21
+#: newspaperizer/templates/article/article_detail.html:25
+#: newspaperizer/templates/article/article_list.html:21
+msgid "Contents:"
+msgstr "В номереЖ"
+
+#: newspaper/templates/article/article_list.html:28
+#: newspaperizer/templates/article/article_list.html:28
+msgid "Newspaper is empty"
+msgstr "Газета пуста"
+
+#: newspaper/templates/article/article_list.html:31
+#: newspaperizer/templates/article/article_list.html:31
+msgid "Generate"
+msgstr "Генерировать"
+
+#: newspaper/templates/base.html:64 newspaperizer/templates/base.html:64
+msgid "Home"
+msgstr ""
+
+#: newspaper/templates/base.html:65 newspaper/templates/base.html:93
+#: newspaper/templates/newspaper/newspaper_list.html:4
+#: newspaper/templates/newspaper/newspaper_list.html:11
+#: newspaper/templates/newspaper/newspaper_list.html:15
+#: newspaperizer/templates/base.html:65 newspaperizer/templates/base.html:93
+#: newspaperizer/templates/newspaper/newspaper_list.html:4
+#: newspaperizer/templates/newspaper/newspaper_list.html:11
+#: newspaperizer/templates/newspaper/newspaper_list.html:15
+msgid "Newspapers"
+msgstr "Газеты"
+
+#: newspaper/templates/base.html:66 newspaper/templates/base.html:94
+#: newspaperizer/templates/base.html:66 newspaperizer/templates/base.html:94
+msgid "Admin"
+msgstr "Админка"
+
+#: newspaper/templates/base.html:85 newspaperizer/templates/base.html:85
+msgid "Wellcome to Newspaperizer"
+msgstr "Добро пожаловать в Newspaperizer"
+
+#: newspaper/templates/newspaper/issue_list.html:29
+#: newspaper/templates/newspaper/newspaper_list.html:23
+#: newspaper/templates/newspaper/year_list.html:28
+#: newspaperizer/templates/newspaper/issue_list.html:29
+#: newspaperizer/templates/newspaper/newspaper_list.html:23
+#: newspaperizer/templates/newspaper/year_list.html:28
+msgid "No newspapers"
+msgstr "Газет нет"
+
+#: newspaper/templates/world/orphans_list.html:14
+#: newspaper/templates/world/orphans_list.html:21
+#: newspaper/templates/world/world_list.html:27
+#: newspaperizer/templates/world/orphans_list.html:14
+#: newspaperizer/templates/world/orphans_list.html:21
+#: newspaperizer/templates/world/world_list.html:27
+msgid "Orphans"
+msgstr "Сырые"
+
+#: newspaper/templates/world/wiki_list.html:3
+#: newspaper/templates/world/world_list.html:14
+#: newspaper/templates/world/world_list.html:21
+#: newspaperizer/templates/world/wiki_list.html:3
+#: newspaperizer/templates/world/world_list.html:14
+#: newspaperizer/templates/world/world_list.html:21
+msgid "Worlds"
+msgstr "Миры"
+
+#: newspaper/templates/world/world_list.html:29
+#: newspaperizer/templates/world/world_list.html:29
+msgid "Random"
+msgstr "Случайно"
 
 #: note/models.py:28 note/models.py:35
 msgid "note type"
