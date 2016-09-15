@@ -125,7 +125,7 @@ LANGUAGES = (
     ('ru', 'Russian'),
 )
 
-LOCALE_PATHS = settings.get('locale_root', (
+LOCALE_PATHS = settings.get('locale_paths', (
     os.path.join(BASE_DIR, 'locale'),
 ))
 
