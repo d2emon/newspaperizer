@@ -13,6 +13,10 @@
   <h1 class="col-md-10">
     {{ world.title }}
   </h1>
+  <ul class="edit-btns">
+    <li><a href="{% url "admin:world_world_add" %}" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> {% trans "Add" %}</a></li>
+    <li><a href="{% url "admin:world_world_change" world.id %}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> {% trans "Change" %}</a></li>
+  </ul>
 </div>
 {% endblock %}
 {% block content %}
