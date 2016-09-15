@@ -90,4 +90,4 @@ ENV/
 /.project
 /.pydevproject
 
-src/settings.yml
+settings.yml
