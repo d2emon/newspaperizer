@@ -1,5 +1,5 @@
-from django.http import HttpResponse
 from django.views.generic import TemplateView, RedirectView
+from django.urls import reverse
 from newspaperizer.settings import settings
 from wiki import load_wiki
 import os
@@ -24,8 +24,17 @@ class PageView(TemplateView):
             subpath = os.path.normpath(subpath) + '/'
         path = os.path.join(self.path, subpath)
 
+        p = os.path.normpath(subpath)
+        crumbs = []
+        while p:
+            old = p
+            p, crumb = os.path.split(os.path.normpath(p))
+            crumbs.append({'title': crumb, 'path': old})
+        print(crumbs)
+
         context = super(PageView, self).get_context_data(**kwargs)
         context['children'] = [{"title": c, "path": "{}{}".format(subpath, c)} for c in self.get_children(path)]
+        context['crumbs'] = reversed(crumbs)
         context['path'] = subpath
         context['upper'] = os.path.join(os.path.normpath(subpath), '..')
         context['title'] = os.path.basename(os.path.normpath(path))

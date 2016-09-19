@@ -5,7 +5,9 @@
 {% block breadcrumbs %}
 	{{ block.super }}
 	{% breadcrumb "Wiki" "wiki" "" %}
-	{% breadcrumb title path %}
+	{% for crumb in crumbs %}
+	{% breadcrumb crumb.title "wiki" crumb.path %}
+	{% endfor %}
 {% endblock %}
 {% block pagehead %}
   <h1>{{ title }}</h1>

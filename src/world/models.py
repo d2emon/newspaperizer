@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 from django.utils.safestring import mark_safe
 from newspaperizer.settings import settings
@@ -41,7 +41,7 @@ class World(models.Model):
     def get_wiki(self):
         wiki_root = settings.get('worlds', dict()).get('wiki_root')
         attach_url = settings.get('worlds', dict()).get('attach_url')
-        return load_wiki(wiki_root, self.title, attach="{}{}/__attach/".format(attach_url, self.title), href="/wiki/Миры/{}/".format(self.title))
+        return load_wiki(wiki_root, self.title, attach="{}{}/__attach/".format(attach_url, self.title), href=reverse("wiki", kwargs={'path': "Миры/{}".format(self.title)}))
 
     def prev(self):
         try:
