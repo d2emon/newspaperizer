@@ -23,6 +23,7 @@ $grid.imagesLoaded().progress(function() {
 {% endblock %}
 {% block content %}
   <ul class="wall container">
+    <li class="brick"><a href="{% url "admin:world_world_add" %}"><h1><span class="glyphicon glyphicon-plus"></span> {% trans "Add" %}</h1></a></li>
     <li class="brick"><a href="{% url "worlds_wiki" %}"><h1>Wiki</h1></a></li>
     <li class="brick"><a href="{% url "world_orphans" %}"><h1>{% trans "Orphans" %}</h1></a></li>
 {% if object_list %}

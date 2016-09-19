@@ -2,7 +2,7 @@
 <pre>
 !! {% trans "Worlds" %}
 
-{% for world in object_list %}* [[Attach:{{ world.get_attach_filename }} -> {{ world.title }}]]
+{% for world in object_list %}* [[Attach:{{ world.get_attach_filename }} -> {{ world.title }}]][[<<]]{{ world.title }}
 {% endfor %}
 (:childlist:)
 </pre>
