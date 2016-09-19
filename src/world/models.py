@@ -39,7 +39,9 @@ class World(models.Model):
         return os.path.basename(self.image.name)
 
     def get_wiki(self):
-        return load_wiki(settings.get('worlds', dict()).get('wiki_root'), self.title)
+        wiki_root = settings.get('worlds', dict()).get('wiki_root')
+        attach_url = settings.get('worlds', dict()).get('attach_url')
+        return load_wiki(wiki_root, self.title, attach="{}{}/__attach/".format(attach_url, self.title), href="/wiki/Миры/{}/".format(self.title))
 
     def prev(self):
         try:

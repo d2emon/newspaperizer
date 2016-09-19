@@ -1,7 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 
 
-def load_wiki(path, title='', attach='__attach'):
+def load_wiki(path, title='', attach='', href=''):
     import re
     try:
         filename = "{}{}/__content.html".format(path, title)
@@ -14,7 +14,8 @@ def load_wiki(path, title='', attach='__attach'):
         return _("Wiki {} not found. File {} is not exists.".format(title, filename))
 
     text = found.group(1)
-    subs = re.sub(r'="__attach/(.*)"', r'="{}\1"'.format(attach), text)
-    return subs
-    print(subs)
+    if href:
+        text = re.sub(r'href="(.*)"', r'href="{}\1"'.format(href), text)
+    if attach:
+        text = re.sub(r'="__attach/(.*)"', r'="{}\1"'.format(attach), text)
     return text
