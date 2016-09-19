@@ -39,3 +39,9 @@ class WikiListView(ListView):
 
 class WorldDetailView(DetailView):
     model = World
+
+    def get_object(self, queryset=None):
+        obj = super(WorldDetailView, self).get_object(queryset)
+        obj.rating += 1
+        obj.save()
+        return obj
