@@ -24,7 +24,7 @@ def load_wiki(path, title):
     if found:
         return found.group(1)
     else:
-        return _("Wiki {} not found".format(title))
+        return _("Wiki {} not found. File {} is not exists.".format(title, filename))
 
 
 class World(models.Model):
