@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_bootstrap_breadcrumbs',
     'index',
+    'wiki',
     'world',
     'newspaper',
     'article',

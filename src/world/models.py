@@ -4,26 +4,12 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.safestring import mark_safe
 from newspaperizer.settings import settings
 from django.core.files.storage import FileSystemStorage
+from wiki import load_wiki
 
 image_fs = FileSystemStorage(
     location=settings.get('worlds', dict()).get('images_root'),
     base_url=settings.get('worlds', dict()).get('images_url'),
 )
-
-
-def load_wiki(path, title):
-    import re
-    try:
-        filename = "{}{}/__content.html".format(path, title)
-        html = open(filename, 'r').read()
-    except FileNotFoundError:
-        html = ''
-
-    found = re.search(r'<body>(.*)</body>', html, re.DOTALL)
-    if found:
-        return found.group(1)
-    else:
-        return _("Wiki {} not found. File {} is not exists.".format(title, filename))
 
 
 class World(models.Model):

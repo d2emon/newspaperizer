@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load django_bootstrap_breadcrumbs %} 
+{% load i18n %}
+{% block title %} {{ title }} {% endblock %} 
+{% block breadcrumbs %}
+	{{ block.super }}
+	{% breadcrumb "Wiki" "wiki" "" %}
+	{% breadcrumb title path %}
+{% endblock %}
+{% block pagehead %}
+  <h1>{{ title }}</h1>
+{% endblock %}
+{% block content %}
+<div class="col-md-3">
+  <ul>
+{% if path %}
+    <li><a href="{% url "wiki" upper %}">..</a></li>
+{% endif %}
+{% if children %}
+	{% for child in children %}
+    <li><a href="{% url "wiki" child.path %}">{{ child.title }}</a></li>
+	{% endfor %}
+{% endif %}
+  </ul>
+</div>
+<div class="col-md-9">
+{{ content | safe }}
+</div>
+{% endblock %}

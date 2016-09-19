@@ -26,5 +26,6 @@ urlpatterns = i18n_patterns(
     url(r'^newspaper/', include('newspaper.urls')),
     url(r'^article/', include('article.urls')),
     url(r'^pdf/', include('pdf.urls')),
+    url(r'^wiki/', include('wiki.urls')),
     url(r'', include('index.urls')),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
