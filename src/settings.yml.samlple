@@ -12,4 +12,7 @@ worlds:
   images_root: ../media/worlds/__attach/
   images_url: /web/worlds/__attach/
   wiki_root: /windows/wiki/mywiki/Миры/
-wiki_root: /windows/wiki/mywiki/
+  attach_url: /web/worlds/
+wiki:
+  wiki_root: /windows/wiki/mywiki/
+  wiki_url: /web/wiki/mywiki/
