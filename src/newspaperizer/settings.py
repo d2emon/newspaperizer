@@ -14,11 +14,11 @@ import os
 import yaml
 import logging
 
-# Load settings from YAML
-settings = yaml.load(open('settings.yml'))
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Load settings from YAML
+settings = yaml.load(open(BASE_DIR + '/settings.yml', encoding='utf-8'))
 
 
 # Quick-start development settings - unsuitable for production
