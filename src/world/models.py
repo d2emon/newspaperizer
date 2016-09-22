@@ -17,7 +17,6 @@ class World(models.Model):
     slug = models.SlugField(_('Slug'), unique=True)
     image = models.ImageField(verbose_name=_('Image'), storage=image_fs)  # upload_to=settings.get('worlds', dict()).get('images', 'images'))
     rating = models.PositiveIntegerField(_('Rating'), default=0)
-    # description = models.TextField(_('Description'), max_length=10000, blank=True)
 
     def __unicode__(self):
         print(self.image.url)
