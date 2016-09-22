@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'note',
     'template',
     'people',
+    'book',
 ]
 
 MIDDLEWARE = [
