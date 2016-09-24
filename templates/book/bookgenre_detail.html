@@ -1,0 +1,76 @@
+{% extends 'book/bookgenre_list.html' %}
+{% load django_bootstrap_breadcrumbs %} 
+{% load i18n %}
+{% block jquery %}
+var $grid = $(".wall").masonry({
+  itemSelector: ".brick",
+  columnWidth: 275
+});
+
+$grid.imagesLoaded().progress(function() {
+  $grid.masonry('layout');
+});
+{% endblock %}
+{% block title %} {{ bookgenre }} {% endblock %} 
+{% block breadcrumbs %}
+	{{ block.super }}
+  {% for sup in bookgenre.bookgenre_set.all %}
+  {% breadcrumb sup sup.get_absolute_url %}
+  {% endfor %}
+	{% breadcrumb bookgenre.title bookgenre.get_absolute_url %}
+{% endblock %}
+{% block prev %}<a{% if bookgenre.prev %} href="{{ bookgenre.prev.get_absolute_url }}"{% endif %} class="btn btn-default">{% if bookgenre.prev %}{{ bookgenre.prev.title }}{% endif %}</a>{% endblock %}
+{% block next %}<a{% if bookgenre.next %} href="{{ bookgenre.next.get_absolute_url }}"{% endif %} class="btn btn-default">{% if bookgenre.next %}{{ bookgenre.next.title }}{% endif %}</a>{% endblock %}
+{% block pagehead %}
+<div class="container">
+  <h1 class="col-md-10">
+    {{ bookgenre.title }}
+  </h1>
+  <ul class="edit-btns">
+    <li><a href="{% url "admin:book_bookgenre_add" %}" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> {% trans "Add" %}</a></li>
+    <li><a href="{% url "admin:book_bookgenre_change" bookgenre.id %}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> {% trans "Change" %}</a></li>
+  </ul>
+</div>
+{% endblock %}
+{% block content %}
+<div class="col-md-12">
+  <div class="col-md-6">
+  {% if bookgenre.image %}
+  <img src="{{ bookgenre.image.url }}" alt="{{ bookgenre.title }}" />
+  {% endif %}
+  <ul>
+    <li><a href="//google.com/search?q={{ bookgenre.title }}">Google</a></li>
+    <li><a href="//wikipedia.org/wiki/{{ bookgenre.title }}">Wikipedia</a></li>
+  </ul>
+  </div>
+
+  <div class="col-md-6">
+  {% if bookgenre.subgenres.all %}
+  <h5>{% trans "Subgenres" %}</h5>
+  <ul>
+    {% for sub in bookgenre.subgenres.all %}
+      <li><a href="{{ sub.get_absolute_url }}">{{ sub }}</a></li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  </div>
+</div>
+<div class="col-md-12">
+  <ul class="wall container">
+    <li class="brick"><a href="{% url "admin:book_book_add" %}"><h1><span class="glyphicon glyphicon-plus"></span> {% trans "Add" %}</h1></a></li>
+    <li class="brick"><a href="{% url "worlds_wiki" %}"><h1>Wiki</h1></a></li>
+    <li class="brick"><a href="{% url "world_orphans" %}"><h1>{% trans "Orphans" %}</h1></a></li>
+{% if bookgenre.book_set.all %}
+    <li class="brick"><a href="{% url "random_world" %}"><h1>{% trans "Random" %}</h1></a></li>
+	{% for book in bookgenre.book_set.all %}
+    <li class="brick"><a href="{{ book.get_absolute_url }}">
+        <h5>{{ book.title }}</h5>
+        {{ book.preview }}
+    </a></li>
+	{% endfor %}
+{% endif %}
+  </ul>
+{{ bookgenre.description | linebreaks }}
+{{ world.get_wiki | safe }}
+</div>
+{% endblock %}

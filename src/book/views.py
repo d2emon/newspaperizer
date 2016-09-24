@@ -1,3 +1,10 @@
-from django.shortcuts import render
+from django.views.generic import ListView, DetailView
+from book.models import BookGenre
 
-# Create your views here.
+
+class GenreList(ListView):
+    model = BookGenre
+
+
+class GenreView(DetailView):
+    model = BookGenre

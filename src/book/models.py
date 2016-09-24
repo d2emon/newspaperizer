@@ -1,5 +1,5 @@
 from django.db import models
-# from django.urls import reverse
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 from newspaperizer.settings import settings
 from django.core.files.storage import FileSystemStorage
@@ -19,7 +19,7 @@ genre_image_fs = FileSystemStorage(
 
 
 class BookGenre(models.Model):
-    parent = models.ManyToManyField('self', verbose_name=_('Parent genre'), blank=True, )
+    subgenres = models.ManyToManyField('self', verbose_name=_('Subgenre'), blank=True, symmetrical=False)
     title = models.CharField(_('Title'), max_length=255)
     slug = models.SlugField(_('Slug'), unique=True)
     folder = models.CharField(_('Folder'), max_length=255, blank=True)
@@ -32,8 +32,14 @@ class BookGenre(models.Model):
     def __str__(self):
         return self.__unicode__()
 
-    # def get_absolute_url(self):
-    #     return reverse('book_genre', args=[self.slug])
+    def get_absolute_url(self):
+        return reverse('book_genre', args=[self.slug])
+
+    def preview(self):
+        if self.image:
+            return self.image.url()
+        else:
+            return ""
 
     class Meta:
         verbose_name = _('Book genre')

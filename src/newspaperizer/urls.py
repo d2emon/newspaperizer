@@ -23,6 +23,7 @@ urlpatterns = i18n_patterns(
     # '',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^world/', include('world.urls')),
+    url(r'^book/', include('book.urls')),
     url(r'^newspaper/', include('newspaper.urls')),
     url(r'^article/', include('article.urls')),
     url(r'^pdf/', include('pdf.urls')),
