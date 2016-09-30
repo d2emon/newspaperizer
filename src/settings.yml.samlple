@@ -11,6 +11,7 @@ template_dirs:
 worlds:
   images_root: ../media/worlds/__attach/
   images_url: /web/worlds/__attach/
+  wiki_path: Миры
   wiki_root: /windows/wiki/mywiki/Миры/
   attach_url: /web/worlds/
 wiki:
