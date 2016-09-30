@@ -1,9 +1,7 @@
 from django.views.generic import ListView, DetailView, TemplateView
 from newspaperizer.settings import settings
 from world.models import World
-# from django.shortcuts import render
 from django.shortcuts import redirect
-from newspaperizer.settings import settings
 
 
 def random_world(request):
