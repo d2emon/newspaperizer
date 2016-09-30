@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load django_bootstrap_breadcrumbs %} 
+{% load i18n %}
+{% block title %}{{ wiki.get_title }}{% endblock %} 
+{% block breadcrumbs %}
+	{{ block.super }}
+	{% for crumb in crumbs %}
+	{% breadcrumb crumb.title "html" crumb.path %}
+	{% endfor %}
+  {% if wiki.subpath %}
+  {% breadcrumb wiki.get_title "html" wiki.subpath %}
+  {% endif %}
+{% endblock %}
+{% block pagehead %}
+  <h1>{{ wiki.get_title }}</h1>
+{% endblock %}
+{% block content %}
+<div class="col-md-3">
+  <div><a href="{% url "wiki" wiki.subpath %}">Wiki</a></div>
+  <ul>
+{% if wiki.subpath %}
+    <li><a href="{% url "html" wiki.get_upper %}">..</a></li>
+{% endif %}
+{% for child in wiki.children %}
+    <li><a href="{% url "html" child.path %}">{{ child.title }}</a></li>
+{% endfor %}
+  </ul>
+</div>
+<div class="col-md-9">
+  {% if wiki.html %}
+  {{ wiki.get_html | safe }}
+  {% elif wiki.text %}
+  <pre>
+  {{ wiki.text | linebreaks }}
+  </pre>
+  {% else %}
+  {% trans "No text found" %}
+  {% endif %}
+</div>
+{% endblock %}
