@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.safestring import mark_safe
 from newspaperizer.settings import settings
 from django.core.files.storage import FileSystemStorage
-from wiki import load_wiki
+from wiki.models import WikiPage
 
 image_fs = FileSystemStorage(
     location=settings.get('worlds', dict()).get('images_root'),
@@ -40,7 +40,17 @@ class World(models.Model):
     def get_wiki(self):
         wiki_root = settings.get('worlds', dict()).get('wiki_root')
         attach_url = settings.get('worlds', dict()).get('attach_url')
-        return load_wiki(wiki_root, self.title, attach="{}{}/__attach/".format(attach_url, self.title), href=reverse("wiki", kwargs={'path': "Миры/{}".format(self.title)}))
+        wiki_path = settings.get('worlds', dict()).get('wiki_path')
+
+        w = WikiPage(root=wiki_root)
+        w.root_url = reverse("path", kwargs={'path': wiki_path, })
+        # "{}{}".format(reverse("wikiroot"), wiki_path)
+        w.load(path="{}/".format(self.title))
+
+        import logging
+        logging.debug("Wiki Root: %s", wiki_root)
+        return w
+        # return load_wiki(wiki_root, self.title, attach="{}{}/__attach/".format(attach_url, self.title), href=reverse("wiki", kwargs={'path': "Миры/{}".format(self.title)}))
 
     def prev(self):
         try:
