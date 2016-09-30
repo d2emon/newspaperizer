@@ -155,6 +155,12 @@ BREADCRUMBS_TEMPLATE = "django_bootstrap_breadcrumbs/bootstrap3.html"
 
 # Debugging into logger
 
+loglevel = logging.WARNING
+logfile = os.path.join(BASE_DIR, 'logfile.log')
+
 if DEBUG:
-    logging.basicConfig(level=logging.DEBUG)
+    logfile = None
+    loglevel = logging.DEBUG
+
+logging.basicConfig(level=loglevel, filename=logfile)
 logging.debug("Settings are %s", settings)
