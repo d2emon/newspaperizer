@@ -6,15 +6,19 @@ from django.core.files.storage import FileSystemStorage
 from people.models import Person
 
 
+config = settings.get('books', dict())
+path = config.get('path')
+
+
 image_fs = FileSystemStorage(
-    location=settings.get('books', dict()).get('images_root'),
-    base_url=settings.get('books', dict()).get('images_url'),
+    location=config.get('images_root'),
+    base_url=config.get('images_url'),
 )
 
 
 genre_image_fs = FileSystemStorage(
-    location=settings.get('books', dict()).get('genres', dict()).get('images_root'),
-    base_url=settings.get('books', dict()).get('genres', dict()).get('images_url'),
+    location=config.get('genres', dict()).get('images_root'),
+    base_url=config.get('genres', dict()).get('images_url'),
 )
 
 
@@ -62,8 +66,15 @@ class Book(models.Model):
     def __str__(self):
         return self.__unicode__()
 
-    # def get_absolute_url(self):
-    #     return reverse('book_genre', args=[self.slug])
+    def get_absolute_url(self):
+        return reverse('book', args=[self.slug])
+
+    def get_authors_list(self):
+        return ", ".join([str(a) for a in self.authors.all()])  # _set.all()
+
+    def get_download_link(self):
+        folders = "/".join([str(g.folder) for g in self.genre.all()])
+        return path + folders + "/" + self.folder
 
     class Meta:
         verbose_name = _('Book')

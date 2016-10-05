@@ -1,5 +1,5 @@
 from django.views.generic import ListView, DetailView
-from book.models import BookGenre
+from book.models import BookGenre, Book
 
 
 class GenreList(ListView):
@@ -8,3 +8,7 @@ class GenreList(ListView):
 
 class GenreView(DetailView):
     model = BookGenre
+
+
+class BookView(DetailView):
+    model = Book
