@@ -39,6 +39,36 @@ class BookGenre(models.Model):
     def get_absolute_url(self):
         return reverse('book_genre', args=[self.slug])
 
+    def get_supgenre(self):
+        supgenres = BookGenre.objects.filter(subgenres__id=self.id).all()  # .all()[0]
+        if supgenres:
+            return supgenres[0]
+        else:
+            return None
+
+    def get_supgenres(self):
+        supgenres = []
+        genre = self.get_supgenre()
+        if genre:
+            supgenres.append(genre)
+            supgenres = supgenres + genre.get_supgenres()
+
+        import logging
+        logging.debug("Supgenres: %s", supgenres)
+        return supgenres
+
+    def get_download_link(self):
+        supgenres = self.get_supgenre()
+        if supgenres:
+            folders = supgenres.get_download_link()
+        else:
+            folders = path
+
+        import logging
+        logging.debug("Link: %s", self.get_supgenres())
+
+        return folders + "/" + self.folder
+
     def preview(self):
         if self.image:
             return self.image.url()
@@ -72,9 +102,15 @@ class Book(models.Model):
     def get_authors_list(self):
         return ", ".join([str(a) for a in self.authors.all()])  # _set.all()
 
+    def get_main_genre(self):
+        if self.genre.all():
+            return self.genre.all()[0]
+        else:
+            return None
+
     def get_download_link(self):
-        folders = "/".join([str(g.folder) for g in self.genre.all()])
-        return path + folders + "/" + self.folder
+        folders = self.get_main_genre().get_download_link()  # "/".join([str(g.folder) for g in self.genre.all()])
+        return folders + "/" + self.folder
 
     class Meta:
         verbose_name = _('Book')

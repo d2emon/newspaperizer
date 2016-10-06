@@ -14,6 +14,10 @@ $grid.imagesLoaded().progress(function() {
 {% block title %} {{ book }} {% endblock %} 
 {% block breadcrumbs %}
 	{{ block.super }}
+  {% for genre in book.get_main_genre.get_supgenres %}
+    {% breadcrumb genre genre.get_absolute_url %}
+  {% endfor %}
+  {% breadcrumb book.get_main_genre book.get_main_genre.get_absolute_url %}
   {% breadcrumb book book.get_absolute_url %}
 {% endblock %}
 {% block pagehead %}
