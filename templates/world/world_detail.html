@@ -30,6 +30,6 @@
 {{ world.description | linebreaks }}
 </div>
 <div class="col-md-9">
-{{ world.get_wiki | safe }}
+{{ world.get_wiki.get_html | safe }}
 </div>
 {% endblock %}

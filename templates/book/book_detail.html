@@ -1,0 +1,54 @@
+{% extends 'book/bookgenre_detail.html' %}
+{% load django_bootstrap_breadcrumbs %} 
+{% load i18n %}
+{% block jquery %}
+var $grid = $(".wall").masonry({
+  itemSelector: ".brick",
+  columnWidth: 275
+});
+
+$grid.imagesLoaded().progress(function() {
+  $grid.masonry('layout');
+});
+{% endblock %}
+{% block title %} {{ book }} {% endblock %} 
+{% block breadcrumbs %}
+	{{ block.super }}
+  {% for genre in book.get_main_genre.get_supgenres %}
+    {% breadcrumb genre genre.get_absolute_url %}
+  {% endfor %}
+  {% breadcrumb book.get_main_genre book.get_main_genre.get_absolute_url %}
+  {% breadcrumb book book.get_absolute_url %}
+{% endblock %}
+{% block pagehead %}
+<div class="container">
+  {% if book.authors.count %}
+    <h2>{{ book.get_authors_list }}</h2>
+  {% endif %}
+  <h1>{{ book.title }}</h1>
+  <ul class="edit-btns">
+    <li><a href="{% url "admin:book_book_add" %}" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> {% trans "Add" %}</a></li>
+    <li><a href="{% url "admin:book_book_change" book.id %}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> {% trans "Change" %}</a></li>
+  </ul>
+</div>
+{% endblock %}
+{% block content %}
+<div class="col-md-12">
+  <div class="col-md-6">
+  {% if book.image %}
+  <img src="{{ book.image.url }}" alt="{{ book.title }}" />
+  {% endif %}
+  <ul>
+    <li><a href="{{ book.get_download_link }}">{% trans "Download" %}</a></li>
+    <li><a href="//google.com/search?q={{ book.title }}">Google</a></li>
+    <li><a href="//wikipedia.org/wiki/{{ book.title }}">Wikipedia</a></li>
+    <li><a href="{% url "worlds_wiki" %}">Wiki</a></li>
+  </ul>
+  </div>
+
+</div>
+<div class="col-md-12">
+{{ book.description | linebreaks }}
+{{ world.get_wiki | safe }}
+</div>
+{% endblock %}
