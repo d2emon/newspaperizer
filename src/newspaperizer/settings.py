@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'note',
     'template',
     'people',
+    'games',
 ]
 
 MIDDLEWARE = [
