@@ -1,0 +1,39 @@
+{% extends 'base.html' %} 
+{% load django_bootstrap_breadcrumbs %}
+{% load i18n %}
+{% block jquery %}
+var $grid = $(".wall").masonry({
+  itemSelector: ".brick",
+  columnWidth: 275
+});
+
+$grid.imagesLoaded().progress(function() {
+  $grid.masonry('layout');
+});
+{% endblock %}
+{% block title %}{% trans "Books" %}{% endblock %} 
+{% block breadcrumbs %}
+	{{ block.super }}
+	{% breadcrumb "Books" "books" %}
+{% endblock %}
+{% block pagehead %}
+<div class="container">
+  <h1 class="col-md-10">{% trans "Books" %}</h1>
+</div>
+{% endblock %}
+{% block content %}
+  <ul class="wall container">
+    <li class="brick"><a href="{% url "admin:book_book_add" %}"><h1><span class="glyphicon glyphicon-plus"></span> {% trans "Add" %}</h1></a></li>
+    <li class="brick"><a href="{% url "worlds_wiki" %}"><h1>Wiki</h1></a></li>
+    <li class="brick"><a href="{% url "world_orphans" %}"><h1>{% trans "Orphans" %}</h1></a></li>
+{% if object_list %}
+    <li class="brick"><a href="{% url "random_world" %}"><h1>{% trans "Random" %}</h1></a></li>
+	{% for book in object_list %}
+    <li class="brick"><a href="{{ genre.get_absolute_url }}">
+        <h5>{{ book.title }}</h5>
+        {{ book.preview }}
+    </a></li>
+	{% endfor %}
+{% endif %}
+  </ul>
+{% endblock %}

@@ -7,7 +7,7 @@ from people.models import Person
 
 
 config = settings.get('books', dict())
-path = config.get('path')
+path = config.get('path', '')
 
 
 image_fs = FileSystemStorage(
@@ -63,9 +63,6 @@ class BookGenre(models.Model):
             folders = supgenres.get_download_link()
         else:
             folders = path
-
-        import logging
-        logging.debug("Link: %s", self.get_supgenres())
 
         return folders + "/" + self.folder
 

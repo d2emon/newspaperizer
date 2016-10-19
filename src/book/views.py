@@ -10,5 +10,9 @@ class GenreView(DetailView):
     model = BookGenre
 
 
+class BookList(ListView):
+    model = Book
+
+
 class BookView(DetailView):
     model = Book
