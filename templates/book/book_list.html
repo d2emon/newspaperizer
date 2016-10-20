@@ -15,7 +15,7 @@
   <ul class="wall container">
     <li class="brick"><a href="{% url "admin:book_book_add" %}"><h1><span class="glyphicon glyphicon-plus"></span> {% trans "Add" %}</h1></a></li>
 {% if object_list %}
-    <li class="brick"><a href="{% url "random_world" %}"><h1>{% trans "Random" %}</h1></a></li>
+    <li class="brick"><a href="{% url "random_book" %}"><h1>{% trans "Random" %}</h1></a></li>
 	{% for book in object_list %}
     <li class="brick"><a href="{{ genre.get_absolute_url }}">
         <h5>{{ book.title }}</h5>

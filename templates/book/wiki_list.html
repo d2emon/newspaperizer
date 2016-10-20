@@ -1,0 +1,8 @@
+{% load i18n %}
+<pre>
+!! {% trans "Genres" %}
+
+{% for genre in object_list %}* [[Attach:{{ genre.get_attach_filename }} -> {{ genre.title }}]][[<<]]{{ genre.title }}
+{% endfor %}
+(:childlist:)
+</pre>
