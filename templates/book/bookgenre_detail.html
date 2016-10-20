@@ -1,17 +1,9 @@
 {% extends 'book/bookgenre_list.html' %}
 {% load django_bootstrap_breadcrumbs %} 
 {% load i18n %}
-{% block jquery %}
-var $grid = $(".wall").masonry({
-  itemSelector: ".brick",
-  columnWidth: 275
-});
 
-$grid.imagesLoaded().progress(function() {
-  $grid.masonry('layout');
-});
-{% endblock %}
 {% block title %} {{ bookgenre }} {% endblock %} 
+
 {% block breadcrumbs %}
 	{{ block.super }}
   {% for sup in bookgenre.bookgenre_set.all %}
@@ -19,8 +11,10 @@ $grid.imagesLoaded().progress(function() {
   {% endfor %}
 	{% breadcrumb bookgenre.title bookgenre.get_absolute_url %}
 {% endblock %}
+
 {% block prev %}<a{% if bookgenre.prev %} href="{{ bookgenre.prev.get_absolute_url }}"{% endif %} class="btn btn-default">{% if bookgenre.prev %}{{ bookgenre.prev.title }}{% endif %}</a>{% endblock %}
 {% block next %}<a{% if bookgenre.next %} href="{{ bookgenre.next.get_absolute_url }}"{% endif %} class="btn btn-default">{% if bookgenre.next %}{{ bookgenre.next.title }}{% endif %}</a>{% endblock %}
+
 {% block pagehead %}
 <div class="container">
   <h1 class="col-md-10">
@@ -32,6 +26,7 @@ $grid.imagesLoaded().progress(function() {
   </ul>
 </div>
 {% endblock %}
+
 {% block content %}
 <div class="col-md-12">
   <div class="col-md-6">

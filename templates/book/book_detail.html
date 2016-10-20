@@ -1,17 +1,9 @@
 {% extends 'book/bookgenre_detail.html' %}
 {% load django_bootstrap_breadcrumbs %} 
 {% load i18n %}
-{% block jquery %}
-var $grid = $(".wall").masonry({
-  itemSelector: ".brick",
-  columnWidth: 275
-});
 
-$grid.imagesLoaded().progress(function() {
-  $grid.masonry('layout');
-});
-{% endblock %}
 {% block title %} {{ book }} {% endblock %} 
+
 {% block breadcrumbs %}
 	{{ block.super }}
   {% for genre in book.get_main_genre.get_supgenres %}
@@ -20,6 +12,7 @@ $grid.imagesLoaded().progress(function() {
   {% breadcrumb book.get_main_genre book.get_main_genre.get_absolute_url %}
   {% breadcrumb book book.get_absolute_url %}
 {% endblock %}
+
 {% block pagehead %}
 <div class="container">
   {% if book.authors.count %}
@@ -32,6 +25,7 @@ $grid.imagesLoaded().progress(function() {
   </ul>
 </div>
 {% endblock %}
+
 {% block content %}
 <div class="col-md-12">
   <div class="col-md-6">
