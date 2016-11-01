@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-01 17:17+0000\n"
+"POT-Creation-Date: 2016-11-01 17:41+0000\n"
 "PO-Revision-Date: 2016-09-15 05:12+0000\n"
 "Last-Translator: Dmitry Kutsenko <d2emonium@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: D2project/env/src/wikiviewer/src/wiki/models.py:91
-#: D2project/wiki/__init__.py:14 env/python3/src/wikifiles/wiki/models.py:92
+#: D2project/wiki/__init__.py:14
 msgid "Wiki {} not found. File {} is not exists."
 msgstr "Вики {} не найдена. Файл {} не существует."
 
@@ -55,11 +55,6 @@ msgstr "Админка"
 #: D2project/env/src/wikiviewer/templates/base.html:60 templates/base.html:60
 msgid "Wellcome to Newspaperizer"
 msgstr "Добро пожаловать в Newspaperizer"
-
-#: src/book/models.py:30 src/book/models.py:87 src/world/models.py:18
-#: src/world/models.py:34
-msgid "Image"
-msgstr "Изображение"
 
 #: src/article/models.py:13 src/article/models.py:30 src/article/models.py:51
 #: src/games/models.py:17 src/games/models.py:33 src/newspaper/models.py:7
@@ -135,6 +130,11 @@ msgstr "Ссылка"
 #: src/book/models.py:29 src/book/models.py:86
 msgid "Folder"
 msgstr "Папка"
+
+#: src/book/models.py:30 src/book/models.py:87 src/world/models.py:18
+#: src/world/models.py:34
+msgid "Image"
+msgstr "Изображение"
 
 #: src/book/models.py:31 src/book/models.py:88
 msgid "Description"
@@ -229,7 +229,7 @@ msgstr ""
 
 #: src/games/models.py:88
 msgid "RPGs"
-msgstr ""
+msgstr "RPG"
 
 #: src/newspaper/models.py:37
 msgid "newspapers"
@@ -397,9 +397,7 @@ msgid "article templates"
 msgstr "шаблоны статей"
 
 #: src/world/models.py:19
-#, fuzzy
-#| msgid "parting"
-msgid "Rating"
+msgid "parting"
 msgstr "пробор"
 
 #: src/world/models.py:68
@@ -413,7 +411,7 @@ msgstr "миры"
 #: templates/article/article_detail.html:25
 #: templates/article/article_list.html:21
 msgid "Contents:"
-msgstr "В номереЖ"
+msgstr "В номере:"
 
 #: templates/article/article_list.html:28
 msgid "Newspaper is empty"
@@ -429,6 +427,11 @@ msgstr "Генерировать"
 #: templates/book/bookgenre_list.html:26 templates/world/world_detail.html:17
 #: templates/world/world_list.html:26
 msgid "Add"
+msgstr ""
+
+#: templates/book/book_detail.html:31 templates/book/bookgenre_detail.html:31
+#: templates/world/world_detail.html:18
+msgid "Change"
 msgstr ""
 
 #: templates/book/book_detail.html:42
