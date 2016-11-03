@@ -1,0 +1,28 @@
+{% extends 'base/list.html' %} 
+{% load django_bootstrap_breadcrumbs %}
+{% load i18n %}
+
+{% block title %}{% trans "News" %}{% endblock %} 
+
+{% block breadcrumbs %}
+	{{ block.super }}
+	{% breadcrumb "News" "news" %}
+{% endblock %}
+
+{% block pageheadtext %}{% trans "News" %}{% endblock %}
+
+{% block content %}
+  <ul class="wall container">
+    <li class="brick"><a href="{% url "admin:blog_news_add" %}"><h1><span class="glyphicon glyphicon-plus"></span> {% trans "Add" %}</h1></a></li>
+{% if object_list %}
+    <li class="brick"><a href="{% url "random_book" %}"><h1>{% trans "Random" %}</h1></a></li>
+	{% for news in object_list %}
+    <li class="brick"><a href="{{ news.get_absolute_url }}">
+        <h4>{{ news.title }}</h4>
+        <div>{{ news.date }}</div>
+        {{ news.brief }}
+    </a></li>
+	{% endfor %}
+{% endif %}
+  </ul>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'blog/news_list.html' %}
+{% load django_bootstrap_breadcrumbs %} 
+{% load i18n %}
+
+{% block title %} {{ news }} {% endblock %} 
+
+{% block breadcrumbs %}
+  {{ block.super }}
+  {% breadcrumb news news.get_absolute_url %}
+{% endblock %}
+
+{% block pagehead %}
+<div class="container">
+  <h1>{{ news.title }}</h1>
+  <ul class="edit-btns">
+    <li><a href="{% url "admin:blog_news_add" %}" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> {% trans "Add" %}</a></li>
+    <li><a href="{% url "admin:blog_news_change" news.id %}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> {% trans "Change" %}</a></li>
+  </ul>
+  <div>{{ news.date }}</div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="col-md-12">
+  <div>
+  	{{ news.brief }}
+  </div>
+  <hr />
+  <div>
+	{{ news.description | linebreaks }}
+  </div>
+</div>
+{% endblock %}

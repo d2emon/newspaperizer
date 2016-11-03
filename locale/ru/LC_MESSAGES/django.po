@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-15 05:42+0000\n"
+"POT-Creation-Date: 2016-11-01 17:46+0000\n"
 "PO-Revision-Date: 2016-09-15 05:12+0000\n"
 "Last-Translator: Dmitry Kutsenko <d2emonium@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,324 +19,451 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: article/models.py:13 article/models.py:30 article/models.py:51
-#: newspaper/models.py:7 note/models.py:12 note/models.py:33
-#: people/models.py:21
-msgid "title"
-msgstr "название"
+#: D2project/env/src/wikiviewer/src/wiki/models.py:91
+#: D2project/wiki/__init__.py:14
+msgid "Wiki {} not found. File {} is not exists."
+msgstr "Вики {} не найдена. Файл {} не существует."
 
-#: article/models.py:14 newspaper/models.py:36 newspaper/models.py:69
-#: template/models.py:6
-msgid "newspaper"
-msgstr "газета"
-
-#: article/models.py:15 article/models.py:31 article/models.py:57
-#: newspaper/models.py:8 newspaper/models.py:73 note/models.py:13
-#: note/models.py:36 people/models.py:114
-msgid "description"
-msgstr "описание"
-
-#: article/models.py:24 article/models.py:53 template/models.py:7
-msgid "category"
-msgstr "рубрика"
-
-#: article/models.py:25
-msgid "categories"
-msgstr "рубрики"
-
-#: article/models.py:46
-msgid "article type"
-msgstr "тип статьи"
-
-#: article/models.py:47
-msgid "article_types"
-msgstr "типы_статей"
-
-#: article/models.py:52 newspaper/models.py:72 newspaper/models.py:88
-msgid "issue"
-msgstr "выпуск"
-
-#: article/models.py:54 template/models.py:8
-msgid "type"
-msgstr "тип"
-
-#: article/models.py:55
-msgid "linked articles"
-msgstr "связанные статьи"
-
-#: article/models.py:56 template/models.py:9
-msgid "page"
-msgstr "страница"
-
-#: article/models.py:107
-msgid "article"
-msgstr "статья"
-
-#: article/models.py:108 note/models.py:37
-msgid "articles"
-msgstr "статьи"
-
-#: newspaper/models.py:9 note/models.py:34 people/models.py:105
-msgid "slug"
-msgstr "ссылка"
-
-#: newspaper/models.py:37
-msgid "newspapers"
-msgstr "газеты"
-
-#: newspaper/models.py:42 newspaper/models.py:63 newspaper/models.py:70
-msgid "year"
-msgstr "год"
-
-#: newspaper/models.py:64
-msgid "years"
-msgstr "годы"
-
-#: newspaper/models.py:71
-msgid "date"
-msgstr "дата"
-
-#: newspaper/models.py:89
-msgid "issues"
-msgstr "выпуски"
-
-#: newspaper/templates/article/article_detail.html:25
-#: newspaper/templates/article/article_list.html:21
-#: newspaperizer/templates/article/article_detail.html:25
-#: newspaperizer/templates/article/article_list.html:21
-msgid "Contents:"
-msgstr "В номереЖ"
-
-#: newspaper/templates/article/article_list.html:28
-#: newspaperizer/templates/article/article_list.html:28
-msgid "Newspaper is empty"
-msgstr "Газета пуста"
-
-#: newspaper/templates/article/article_list.html:31
-#: newspaperizer/templates/article/article_list.html:31
-msgid "Generate"
-msgstr "Генерировать"
-
-#: newspaper/templates/base.html:64 newspaperizer/templates/base.html:64
+#: D2project/env/src/wikiviewer/templates/base.html:37 templates/base.html:37
 msgid "Home"
 msgstr ""
 
-#: newspaper/templates/base.html:65 newspaper/templates/base.html:93
-#: newspaper/templates/newspaper/newspaper_list.html:4
-#: newspaper/templates/newspaper/newspaper_list.html:11
-#: newspaper/templates/newspaper/newspaper_list.html:15
-#: newspaperizer/templates/base.html:65 newspaperizer/templates/base.html:93
-#: newspaperizer/templates/newspaper/newspaper_list.html:4
-#: newspaperizer/templates/newspaper/newspaper_list.html:11
-#: newspaperizer/templates/newspaper/newspaper_list.html:15
-msgid "Newspapers"
-msgstr "Газеты"
+#: D2project/env/src/wikiviewer/templates/base.html:38 templates/base.html:38
+msgid "Wiki"
+msgstr ""
 
-#: newspaper/templates/base.html:66 newspaper/templates/base.html:94
-#: newspaperizer/templates/base.html:66 newspaperizer/templates/base.html:94
-msgid "Admin"
-msgstr "Админка"
-
-#: newspaper/templates/base.html:85 newspaperizer/templates/base.html:85
-msgid "Wellcome to Newspaperizer"
-msgstr "Добро пожаловать в Newspaperizer"
-
-#: newspaper/templates/newspaper/issue_list.html:29
-#: newspaper/templates/newspaper/newspaper_list.html:23
-#: newspaper/templates/newspaper/year_list.html:28
-#: newspaperizer/templates/newspaper/issue_list.html:29
-#: newspaperizer/templates/newspaper/newspaper_list.html:23
-#: newspaperizer/templates/newspaper/year_list.html:28
-msgid "No newspapers"
-msgstr "Газет нет"
-
-#: newspaper/templates/world/orphans_list.html:14
-#: newspaper/templates/world/orphans_list.html:21
-#: newspaper/templates/world/world_list.html:27
-#: newspaperizer/templates/world/orphans_list.html:14
-#: newspaperizer/templates/world/orphans_list.html:21
-#: newspaperizer/templates/world/world_list.html:27
-msgid "Orphans"
-msgstr "Сырые"
-
-#: newspaper/templates/world/wiki_list.html:3
-#: newspaper/templates/world/world_list.html:14
-#: newspaper/templates/world/world_list.html:21
-#: newspaperizer/templates/world/wiki_list.html:3
-#: newspaperizer/templates/world/world_list.html:14
-#: newspaperizer/templates/world/world_list.html:21
+#: D2project/env/src/wikiviewer/templates/base.html:39 templates/base.html:39
+#: templates/world/wiki_list.html:3 templates/world/world_list.html:14
+#: templates/world/world_list.html:21
 msgid "Worlds"
 msgstr "Миры"
 
-#: newspaper/templates/world/world_list.html:29
-#: newspaperizer/templates/world/world_list.html:29
-msgid "Random"
-msgstr "Случайно"
+#: D2project/env/src/wikiviewer/templates/base.html:40
+#: D2project/env/src/wikiviewer/templates/base.html:68 templates/base.html:41
+#: templates/base.html:69 templates/newspaper/newspaper_list.html:4
+#: templates/newspaper/newspaper_list.html:11
+#: templates/newspaper/newspaper_list.html:15
+msgid "Newspapers"
+msgstr "Газеты"
 
-#: note/models.py:28 note/models.py:35
-msgid "note type"
-msgstr "тип заметки"
+#: D2project/env/src/wikiviewer/templates/base.html:41
+#: D2project/env/src/wikiviewer/templates/base.html:69 templates/base.html:42
+#: templates/base.html:70
+msgid "Admin"
+msgstr "Админка"
 
-#: note/models.py:29
-msgid "note types"
-msgstr "типы заметок"
+#: D2project/env/src/wikiviewer/templates/base.html:60 templates/base.html:61
+msgid "Wellcome to Newspaperizer"
+msgstr "Добро пожаловать в Newspaperizer"
 
-#: note/models.py:55
-msgid "note"
-msgstr "заметка"
+#: src/article/models.py:13 src/article/models.py:30 src/article/models.py:51
+#: src/games/models.py:17 src/games/models.py:33 src/newspaper/models.py:7
+#: src/note/models.py:12 src/note/models.py:33 src/people/models.py:21
+msgid "title"
+msgstr "название"
 
-#: note/models.py:56
-msgid "notes"
-msgstr "заметки"
+#: src/article/models.py:14 src/newspaper/models.py:36
+#: src/newspaper/models.py:69 src/template/models.py:6
+msgid "newspaper"
+msgstr "газета"
 
-#: people/models.py:11 people/models.py:42 people/models.py:70
-msgid "color"
-msgstr "цвет"
+#: src/article/models.py:15 src/article/models.py:31 src/article/models.py:57
+#: src/games/models.py:19 src/games/models.py:35 src/newspaper/models.py:8
+#: src/newspaper/models.py:73 src/note/models.py:13 src/note/models.py:36
+#: src/people/models.py:114
+msgid "description"
+msgstr "описание"
 
-#: people/models.py:22 people/models.py:52
-msgid "size"
-msgstr "размер"
+#: src/article/models.py:24 src/article/models.py:53 src/template/models.py:7
+msgid "category"
+msgstr "рубрика"
 
-#: people/models.py:32 people/models.py:72
-msgid "parting"
-msgstr "пробор"
+#: src/article/models.py:25
+msgid "categories"
+msgstr "рубрики"
 
-#: people/models.py:63
-msgid "breast size"
-msgstr "размер груди"
+#: src/article/models.py:46
+msgid "article type"
+msgstr "тип статьи"
 
-#: people/models.py:64
-msgid "areola"
-msgstr "ареола"
+#: src/article/models.py:47
+msgid "article_types"
+msgstr "типы_статей"
 
-#: people/models.py:71
-msgid "haircut"
-msgstr "прическа"
+#: src/article/models.py:52 src/newspaper/models.py:72
+#: src/newspaper/models.py:88
+msgid "issue"
+msgstr "выпуск"
 
-#: people/models.py:73
-msgid "curling"
-msgstr "вьются"
+#: src/article/models.py:54 src/template/models.py:8
+msgid "type"
+msgstr "тип"
 
-#: people/models.py:80
-msgid "eyebrow"
-msgstr "брови"
+#: src/article/models.py:55
+msgid "linked articles"
+msgstr "связанные статьи"
 
-#: people/models.py:81
-msgid "eye"
-msgstr "глаза"
+#: src/article/models.py:56 src/template/models.py:9
+msgid "page"
+msgstr "страница"
 
-#: people/models.py:82
-msgid "ear"
-msgstr "уши"
+#: src/article/models.py:107
+msgid "article"
+msgstr "статья"
 
-#: people/models.py:83
-msgid "nose"
-msgstr "нос"
+#: src/article/models.py:108 src/note/models.py:37
+msgid "articles"
+msgstr "статьи"
 
-#: people/models.py:84
-msgid "chick"
-msgstr "щека"
+#: src/book/models.py:26
+msgid "Subgenre"
+msgstr ""
 
-#: people/models.py:85
-msgid "mouth"
-msgstr "рот"
-
-#: people/models.py:86
-msgid "lip"
-msgstr "губы"
-
-#: people/models.py:87
-msgid "chin"
-msgstr "подбородок"
-
-#: people/models.py:88
-msgid "neck"
-msgstr "шея"
-
-#: people/models.py:94
-msgid "head"
-msgstr "голова"
-
-#: people/models.py:95 people/models.py:108
-msgid "body"
-msgstr "тело"
-
-#: people/models.py:96
-msgid "belt"
-msgstr "пояс"
-
-#: people/models.py:97
-msgid "legs"
-msgstr "ноги"
-
-#: people/models.py:98
-msgid "feet"
-msgstr "ступни"
-
-#: people/models.py:102
-msgid "first name"
-msgstr "имя"
-
-#: people/models.py:103
-msgid "last name"
-msgstr "фамилия"
-
-#: people/models.py:104
-msgid "nickname"
-msgstr "псевдоним"
-
-#: people/models.py:109
-msgid "arm"
-msgstr "рука"
-
-#: people/models.py:110
-msgid "hand"
-msgstr "ладонь"
-
-#: people/models.py:111
-msgid "leg"
-msgstr "нога"
-
-#: people/models.py:112
-msgid "foot"
-msgstr "ступня"
-
-#: people/models.py:146
-msgid "person"
-msgstr "персонаж"
-
-#: people/models.py:147
-msgid "people"
-msgstr "люди"
-
-#: template/models.py:21
-msgid "article template"
-msgstr "шаблон статьи"
-
-#: template/models.py:22
-msgid "article templates"
-msgstr "шаблоны статей"
-
-#: world/models.py:16
+#: src/book/models.py:27 src/book/models.py:84 src/world/models.py:16
 msgid "Title"
 msgstr "Название"
 
-#: world/models.py:17
+#: src/book/models.py:28 src/book/models.py:85 src/world/models.py:17
 msgid "Slug"
 msgstr "Ссылка"
 
-#: world/models.py:18 world/models.py:34
+#: src/book/models.py:29 src/book/models.py:86
+msgid "Folder"
+msgstr "Папка"
+
+#: src/book/models.py:30 src/book/models.py:87 src/world/models.py:18
+#: src/world/models.py:34
 msgid "Image"
 msgstr "Изображение"
 
-#: world/models.py:19
+#: src/book/models.py:31 src/book/models.py:88
 msgid "Description"
 msgstr "Описание"
 
-#: world/models.py:53
+#: src/book/models.py:76
+msgid "Book genre"
+msgstr "Книжный жанр"
+
+#: src/book/models.py:77
+msgid "Book genres"
+msgstr "Книжные жанры"
+
+#: src/book/models.py:82
+msgid "Authors"
+msgstr "Авторы"
+
+#: src/book/models.py:83 templates/book/bookgenre_list.html:5
+#: templates/book/bookgenre_list.html:12 templates/book/wiki_list.html:3
+msgid "Genres"
+msgstr "Жанры"
+
+#: src/book/models.py:113
+msgid "Book"
+msgstr "Книга"
+
+#: src/book/models.py:114 templates/base.html:40
+#: templates/book/book_list.html:5 templates/book/book_list.html:12
+msgid "Books"
+msgstr "Книги"
+
+#: src/games/models.py:18 src/games/models.py:34 src/newspaper/models.py:9
+#: src/note/models.py:34 src/people/models.py:105
+msgid "slug"
+msgstr "ссылка"
+
+#: src/games/models.py:28
+msgid "video game genre"
+msgstr "жанр компьютерной игры"
+
+#: src/games/models.py:29
+msgid "video game genres"
+msgstr "жанры компьютерных игр"
+
+#: src/games/models.py:45
+msgid "game"
+msgstr "игра"
+
+#: src/games/models.py:46
+msgid "games"
+msgstr "игры"
+
+#: src/games/models.py:54
+msgid "outdoor game"
+msgstr "дворовая игра"
+
+#: src/games/models.py:55
+msgid "outdoor games"
+msgstr "дворовые игры"
+
+#: src/games/models.py:62
+msgid "gamebook"
+msgstr "книга-игра"
+
+#: src/games/models.py:63
+msgid "gamebooks"
+msgstr "книги-игры"
+
+#: src/games/models.py:68
+msgid "genre"
+msgstr "жанр"
+
+#: src/games/models.py:71
+msgid "video game"
+msgstr "компьютерная игра"
+
+#: src/games/models.py:72
+msgid "video games"
+msgstr "компьютерные игры"
+
+#: src/games/models.py:79
+msgid "board game"
+msgstr "настольная игра"
+
+#: src/games/models.py:80
+msgid "board games"
+msgstr "настольные игры"
+
+#: src/games/models.py:87
+msgid "RPG"
+msgstr ""
+
+#: src/games/models.py:88
+msgid "RPGs"
+msgstr "RPG"
+
+#: src/newspaper/models.py:37
+msgid "newspapers"
+msgstr "газеты"
+
+#: src/newspaper/models.py:42 src/newspaper/models.py:63
+#: src/newspaper/models.py:70
+msgid "year"
+msgstr "год"
+
+#: src/newspaper/models.py:64
+msgid "years"
+msgstr "годы"
+
+#: src/newspaper/models.py:71
+msgid "date"
+msgstr "дата"
+
+#: src/newspaper/models.py:89
+msgid "issues"
+msgstr "выпуски"
+
+#: src/note/models.py:28 src/note/models.py:35
+msgid "note type"
+msgstr "тип заметки"
+
+#: src/note/models.py:29
+msgid "note types"
+msgstr "типы заметок"
+
+#: src/note/models.py:55
+msgid "note"
+msgstr "заметка"
+
+#: src/note/models.py:56
+msgid "notes"
+msgstr "заметки"
+
+#: src/people/models.py:11 src/people/models.py:42 src/people/models.py:70
+msgid "color"
+msgstr "цвет"
+
+#: src/people/models.py:22 src/people/models.py:52
+msgid "size"
+msgstr "размер"
+
+#: src/people/models.py:32 src/people/models.py:72
+msgid "parting"
+msgstr "пробор"
+
+#: src/people/models.py:63
+msgid "breast size"
+msgstr "размер груди"
+
+#: src/people/models.py:64
+msgid "areola"
+msgstr "ареола"
+
+#: src/people/models.py:71
+msgid "haircut"
+msgstr "прическа"
+
+#: src/people/models.py:73
+msgid "curling"
+msgstr "вьются"
+
+#: src/people/models.py:80
+msgid "eyebrow"
+msgstr "брови"
+
+#: src/people/models.py:81
+msgid "eye"
+msgstr "глаза"
+
+#: src/people/models.py:82
+msgid "ear"
+msgstr "уши"
+
+#: src/people/models.py:83
+msgid "nose"
+msgstr "нос"
+
+#: src/people/models.py:84
+msgid "chick"
+msgstr "щека"
+
+#: src/people/models.py:85
+msgid "mouth"
+msgstr "рот"
+
+#: src/people/models.py:86
+msgid "lip"
+msgstr "губы"
+
+#: src/people/models.py:87
+msgid "chin"
+msgstr "подбородок"
+
+#: src/people/models.py:88
+msgid "neck"
+msgstr "шея"
+
+#: src/people/models.py:94
+msgid "head"
+msgstr "голова"
+
+#: src/people/models.py:95 src/people/models.py:108
+msgid "body"
+msgstr "тело"
+
+#: src/people/models.py:96
+msgid "belt"
+msgstr "пояс"
+
+#: src/people/models.py:97
+msgid "legs"
+msgstr "ноги"
+
+#: src/people/models.py:98
+msgid "feet"
+msgstr "ступни"
+
+#: src/people/models.py:102
+msgid "first name"
+msgstr "имя"
+
+#: src/people/models.py:103
+msgid "last name"
+msgstr "фамилия"
+
+#: src/people/models.py:104
+msgid "nickname"
+msgstr "псевдоним"
+
+#: src/people/models.py:109
+msgid "arm"
+msgstr "рука"
+
+#: src/people/models.py:110
+msgid "hand"
+msgstr "ладонь"
+
+#: src/people/models.py:111
+msgid "leg"
+msgstr "нога"
+
+#: src/people/models.py:112
+msgid "foot"
+msgstr "ступня"
+
+#: src/people/models.py:146
+msgid "person"
+msgstr "персонаж"
+
+#: src/people/models.py:147
+msgid "people"
+msgstr "люди"
+
+#: src/template/models.py:21
+msgid "article template"
+msgstr "шаблон статьи"
+
+#: src/template/models.py:22
+msgid "article templates"
+msgstr "шаблоны статей"
+
+#: src/world/models.py:19
+msgid "Rating"
+msgstr "Рейтинг"
+
+#: src/world/models.py:68
 msgid "world"
 msgstr "мир"
 
-#: world/models.py:54
+#: src/world/models.py:69
 msgid "worlds"
 msgstr "миры"
+
+#: templates/article/article_detail.html:25
+#: templates/article/article_list.html:21
+msgid "Contents:"
+msgstr "В номере:"
+
+#: templates/article/article_list.html:28
+msgid "Newspaper is empty"
+msgstr "Газета пуста"
+
+#: templates/article/article_list.html:31
+msgid "Generate"
+msgstr "Генерировать"
+
+#: templates/base/list.html:28 templates/book/book_detail.html:23
+#: templates/book/book_list.html:16 templates/book/bookgenre_detail.html:24
+#: templates/book/bookgenre_detail.html:55
+#: templates/book/bookgenre_list.html:16 templates/world/world_detail.html:17
+#: templates/world/world_list.html:26
+msgid "Add"
+msgstr ""
+
+#: templates/base/list.html:30 templates/book/bookgenre_detail.html:57
+#: templates/book/bookgenre_list.html:18 templates/world/orphans_list.html:14
+#: templates/world/orphans_list.html:21 templates/world/world_list.html:28
+msgid "Orphans"
+msgstr "Сырые"
+
+#: templates/base/list.html:32 templates/book/book_list.html:18
+#: templates/book/bookgenre_detail.html:59
+#: templates/book/bookgenre_list.html:21 templates/world/world_list.html:30
+msgid "Random"
+msgstr "Случайно"
+
+#: templates/book/book_detail.html:24 templates/book/bookgenre_detail.html:25
+#: templates/world/world_detail.html:18
+msgid "Change"
+msgstr ""
+
+#: templates/book/book_detail.html:36
+msgid "Download"
+msgstr "Скачать"
+
+#: templates/book/bookgenre_detail.html:44
+msgid "Subgenres"
+msgstr "Поджанры"
+
+#: templates/book/bookgenre_list.html:19
+msgid "All"
+msgstr ""
+
+#: templates/newspaper/issue_list.html:29
+#: templates/newspaper/newspaper_list.html:23
+#: templates/newspaper/year_list.html:28
+msgid "No newspapers"
+msgstr "Газет нет"
+
+#: templates/wiki/html.html:37
+msgid "No text found"
+msgstr "Текст не найден"

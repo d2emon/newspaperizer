@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django_bootstrap_breadcrumbs',
     'index',
     'wiki',
+    'blog',
     'world',
     'newspaper',
     'article',
