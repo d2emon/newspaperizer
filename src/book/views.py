@@ -1,5 +1,5 @@
 from django.views.generic import ListView, DetailView
-from book.models import BookGenre, Book
+from book.models import BookGenre, ScienceBook
 from django.shortcuts import redirect
 
 
@@ -17,13 +17,13 @@ class GenreView(DetailView):
 
 
 def random_book(request):
-    book = Book.objects.order_by('?').first()
+    book = ScienceBook.objects.order_by('?').first()
     return redirect(book.get_absolute_url())
 
 
 class BookListView(ListView):
-    model = Book
+    model = ScienceBook
 
 
 class BookView(DetailView):
-    model = Book
+    model = ScienceBook

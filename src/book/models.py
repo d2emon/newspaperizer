@@ -78,7 +78,7 @@ class BookGenre(models.Model):
         ordering = ['title', ]
 
 
-class Book(models.Model):
+class ScienceBook(models.Model):
     authors = models.ManyToManyField(Person, verbose_name=_('Authors'), blank=True)
     genre = models.ManyToManyField('BookGenre', verbose_name=_('Genres'))
     title = models.CharField(_('Title'), max_length=255)

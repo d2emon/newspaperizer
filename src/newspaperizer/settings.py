@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'template',
     'people',
     'games',
+    'speccy',
     'book',
 ]
 
